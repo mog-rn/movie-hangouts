@@ -12,6 +12,8 @@ import { SparklesIcon } from "react-native-heroicons/solid";
 import {
   HomeIcon as HomeIconOutline,
   UserCircleIcon,
+  MagnifyingGlassIcon,
+  PlusCircleIcon,
 } from "react-native-heroicons/outline";
 
 const Tab = createBottomTabNavigator();
@@ -32,22 +34,32 @@ const BottomTabsNavigator = () => {
       <Tab.Screen
         name={screen_names.HOME}
         component={HomeScreen}
-        // options={{
-        //   tabBarIcon: (props: {
-        //     focused: boolean;
-        //     color: string;
-        //     size: number;
-        //   }) => <HomeIconOutline color="#000" />,
-        // }}
+        options={{
+          tabBarIcon: () => <HomeIconOutline color="#6A30CA" size={35} />,
+        }}
       />
-      <Tab.Screen name={screen_names.SEARCH} component={SearchScreen} />
-      <Tab.Screen name={screen_names.LIST} component={ListScreen} />
+      <Tab.Screen
+        name={screen_names.SEARCH}
+        component={SearchScreen}
+        options={{
+          tabBarIcon: () => <MagnifyingGlassIcon color="#6A30CA" size={35} />,
+        }}
+      />
+      <Tab.Screen
+        name={screen_names.LIST}
+        component={ListScreen}
+        options={{
+          tabBarIcon: () => <PlusCircleIcon color="#6A30CA" size={35} />,
+        }}
+      />
       <Tab.Screen
         name={screen_names.PROFILE}
         component={Profile}
-        // options={{
-        //   tabBarIcon: () => <UserCircleIcon className="text-red-500" />,
-        // }}
+        options={{
+          tabBarIcon: () => (
+            <UserCircleIcon color="#6A30CA" size={35} />
+          ),
+        }}
       />
     </Tab.Navigator>
   );
