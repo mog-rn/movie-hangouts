@@ -1,5 +1,6 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useContext, useEffect } from "react";
 import { authService } from "./authService";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 type AuthContextData = {
   authData?: AuthData;
@@ -22,6 +23,23 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
   // loading
   const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    loadStorageData();
+  }, []);
+
+  async function loadStorageData(): Promise<void> {
+    try {
+      const authDataSerialised = await AsyncStorage.getItem("@authData");
+      if (authDataSerialised) {
+        const _authData: AuthData = JSON.parse(authDataSerialised);
+        setAuthData(_authData);
+      }
+    } catch (e) {
+    } finally {
+      setLoading(false);
+    }
+  }
+
   // Sign in
   const signIn = async () => {
     const _authData = await authService.signIn(
@@ -30,11 +48,13 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
     );
 
     setAuthData(_authData);
+    AsyncStorage.setItem('@AuthData', JSON.stringify(_authData))
   };
 
   // Sign out
   const signOut = async () => {
     setAuthData(undefined);
+    await AsyncStorage.removeItem('@AuthData')
   };
 
   return (
