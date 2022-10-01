@@ -24,7 +24,8 @@ const BottomTabsNavigator = () => {
       screenOptions={{
         tabBarStyle: {
           position: "absolute",
-          backgroundColor: "#fff",
+          backgroundColor: "#3A1A6A",
+          opacity:  .4,
           borderTopWidth: 0,
           elevation: 0,
           height: 60,
