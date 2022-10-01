@@ -2,12 +2,12 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import MainLayout from '../layouts/MainLayout'
 
-const Profile = () => {
+const Tickets = () => {
   return (
     <MainLayout>
-      <Text>Profile</Text>
+      <Text>Tickets</Text>
     </MainLayout>
   )
 }
 
-export default Profile
+export default Tickets

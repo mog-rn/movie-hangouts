@@ -14,7 +14,9 @@ import {
   UserCircleIcon,
   MagnifyingGlassIcon,
   PlusCircleIcon,
+  TicketIcon,
 } from "react-native-heroicons/outline";
+import Tickets from "../screens/TicketsScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -24,11 +26,12 @@ const BottomTabsNavigator = () => {
       screenOptions={{
         tabBarStyle: {
           position: "absolute",
-          backgroundColor: "#3A1A6A",
-          opacity:  .4,
+          backgroundColor: "rgba(58, 26, 106, 0.4)",
+          paddingBottom: 10,
+          paddingTop: 5,
           borderTopWidth: 0,
           elevation: 0,
-          height: 60,
+          height: 65,
         },
       }}
     >
@@ -36,30 +39,35 @@ const BottomTabsNavigator = () => {
         name={screen_names.HOME}
         component={HomeScreen}
         options={{
-          tabBarIcon: () => <HomeIconOutline color="#6A30CA" size={35} />,
+          tabBarIcon: () => <HomeIconOutline color="#fff" size={30} />,
         }}
       />
       <Tab.Screen
         name={screen_names.SEARCH}
         component={SearchScreen}
         options={{
-          tabBarIcon: () => <MagnifyingGlassIcon color="#6A30CA" size={35} />,
+          tabBarIcon: () => <MagnifyingGlassIcon color="#fff" size={30} />,
         }}
       />
       <Tab.Screen
         name={screen_names.LIST}
         component={ListScreen}
         options={{
-          tabBarIcon: () => <PlusCircleIcon color="#6A30CA" size={35} />,
+          tabBarIcon: () => <PlusCircleIcon color="#fff" size={30} />,
+        }}
+      />
+      <Tab.Screen
+        name="Tickets"
+        component={Tickets}
+        options={{
+          tabBarIcon: () => <TicketIcon color="#fff" size={30} />,
         }}
       />
       <Tab.Screen
         name={screen_names.PROFILE}
         component={Profile}
         options={{
-          tabBarIcon: () => (
-            <UserCircleIcon color="#6A30CA" size={35} />
-          ),
+          tabBarIcon: () => <UserCircleIcon color="#fff" size={30} />,
         }}
       />
     </Tab.Navigator>

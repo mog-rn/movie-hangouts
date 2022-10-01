@@ -3,14 +3,15 @@ import React from 'react'
 
 // Maps
 import MapView from 'react-native-maps'
+import MainLayout from '../layouts/MainLayout'
 
 
 const Search = () => {
   return (
-    <View className='relative'>
+    <MainLayout>
       <TextInput className='bg-white absolute inset-1 h-12' />
       <MapView style={styles.map} />
-    </View>
+    </MainLayout>
   )
 }
 
