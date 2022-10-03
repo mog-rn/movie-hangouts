@@ -5,6 +5,7 @@ import {
   Image,
   TouchableOpacity,
   FlatList,
+  ActivityIndicator
   // NativeBaseProvider,
 } from "react-native";
 import MainLayout from "../layouts/MainLayout";
@@ -15,33 +16,19 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function Homepage() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
 
   const upcomingMovies = async () => {
-    try {
-      let headersList = {
-        Accept: "*/*",
-        "User-Agent": "Thunder Client (https://www.thunderclient.com)",
-      };
-
-      let response = await fetch(
-        "https://api.themoviedb.org/3/movie/upcoming?api_key=57f69e0d07d803f48a501b9447c516e1&language=en-US&page=1",
-        {
-          method: "GET",
-          headers: headersList,
-        }
-      );
-
-      let _data = await response.json();
-      console.info(_data.results.original_title);
-
-      setData(_data.results);
-    } catch (e) {
-      console.error(e);
-    } finally {
-      setIsLoading(false);
-    }
+     return fetch('https://api.themoviedb.org/3/movie/upcoming?api_key=57f69e0d07d803f48a501b9447c516e1&language=en-US&page=1', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      .then((res) => res.json())
+           
+    
   };
 
   useEffect(() => {
@@ -92,26 +79,24 @@ export default function Homepage() {
         </View>
       </View>
 
-      <View>
-        {data.map((movie, index) => (
-          <View key={index}>
-            <Text>Spectre</Text>
-          </View>
-        ))}
-        {/* {data ? (
-            // <Text className="text-white">{data}</Text>
-            <FlatList 
-              data={data}
-              keyExtractor={({ id }, index) => id}
-              renderItem={({item}) => (
-                <Text>{item.original_title}</Text>
-              )}
-            />
-          ) : (
-            <Text className="text-white">No data to be displayed</Text>
-          )} */}
-      </View>
-      {/* </NativeBaseProvider> */}
+      {isLoading ? <ActivityIndicator /> : (
+        <FlatList
+          data={data}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
+            <View className="flex-row items-center justify-between p-3 bg-[#3A1A6A]/40 rounded-xl mb-3">
+              <View className="flex-row items-center">
+                <Image
+                  source={{
+                    uri: `https://image.tmdb.org/t/p/w500${item.poster_path}`,
+                  }}
+                  className="w-16 h-16 rounded-xl"
+                  />
+                  </View>
+                  </View>
+          )}
+        />
+      )}
     </MainLayout>
   );
 }
