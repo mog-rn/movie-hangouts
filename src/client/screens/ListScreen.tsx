@@ -5,7 +5,7 @@ import MainLayout from '../layouts/MainLayout'
 const List = () => {
   return (
     <MainLayout>
-      <Text>List</Text>
+      <Text className='text-white'>List</Text>
     </MainLayout>
   )
 }
