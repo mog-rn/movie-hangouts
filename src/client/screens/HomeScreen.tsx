@@ -44,14 +44,21 @@ export default function Homepage() {
   const [data, setData] = useState([]);
 
   const upcomingMovies = async () => {
-    const response = await fetch('https://api.themoviedb.org/3/movie/upcoming?api_key=57f69e0d07d803f48a501b9447c516e1&language=en-US&page=1', {
+    try {
+      const response = await fetch('https://api.themoviedb.org/3/movie/upcoming?api_key=57f69e0d07d803f48a501b9447c516e1&language=en-US', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
         },
       })
-    const data = response.json();
-    console.log(data);
+      const data = await response.json();
+      // console.log(data.results);
+      setData(data.results)
+    } catch (e) {
+      console.log(e)
+    } finally {
+      setIsLoading(false)
+    }
   };
 
   useEffect(() => {
@@ -100,14 +107,50 @@ export default function Homepage() {
           </TouchableOpacity>
         </View>
       </View>
+      <ScrollView>
+        <View>
+          <Text className="text-white font-bold text-xl py-2">New Releases</Text>
+          <ScrollView horizontal >
+            {data.map((movie, id) => (
+              <TouchableOpacity key={movie.id} className="space-y-2 p-2 items-start">
+                <Image source={{
+                  uri: `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
 
-      {isLoading ? (
-        <ActivityIndicator />
-      ) : (
-        <ScrollView>
+                }}
+                  resizeMode="contain"
+                  className="h-44 w-36 rounded-xl mb-3" />
+                <View className="space-y-2">
+                  <Text className="text-white w-32 text-xs">{movie.title}</Text>
+                  {/* <Text className="text-white text-xs">{movie.release_date}</Text> */}
+                </View>
+              </TouchableOpacity>
+            ))}
 
-        </ScrollView>   
-           )}
+          </ScrollView>
+
+        </View>
+        <View>
+          <Text className="text-white font-bold text-xl py-2">New Releases</Text>
+          <ScrollView horizontal >
+            {data.map((movie, id) => (
+              <TouchableOpacity key={movie.id} className="space-y-2 p-2 items-start">
+                <Image source={{
+                  uri: `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+
+                }}
+                  resizeMode="contain"
+                  className="h-44 w-36 rounded-xl mb-3" />
+                <View className="space-y-2">
+                  <Text className="text-white w-32 text-xs">{movie.title}</Text>
+                  {/* <Text className="text-white text-xs">{movie.release_date}</Text> */}
+                </View>
+              </TouchableOpacity>
+            ))}
+
+          </ScrollView>
+
+        </View>
+      </ScrollView>
       <View className="mb-10">
         <FloatingAction
           color="#3A1A6A"
