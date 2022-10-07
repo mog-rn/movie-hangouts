@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   FlatList,
   ActivityIndicator,
+  ScrollView,
 } from "react-native";
 import MainLayout from "../layouts/MainLayout";
 import profile from "../assets/profile.jpg";
@@ -43,15 +44,14 @@ export default function Homepage() {
   const [data, setData] = useState([]);
 
   const upcomingMovies = async () => {
-    return fetch(
-      "https://api.themoviedb.org/3/movie/upcoming?api_key=57f69e0d07d803f48a501b9447c516e1&language=en-US&page=1",
-      {
-        method: "GET",
+    const response = await fetch('https://api.themoviedb.org/3/movie/upcoming?api_key=57f69e0d07d803f48a501b9447c516e1&language=en-US&page=1', {
+        method: 'GET',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
-      }
-    ).then((res) => res.json());
+      })
+    const data = response.json();
+    console.log(data);
   };
 
   useEffect(() => {
@@ -104,23 +104,10 @@ export default function Homepage() {
       {isLoading ? (
         <ActivityIndicator />
       ) : (
-        <FlatList
-          data={data}
-          keyExtractor={(item) => item}
-          renderItem={({ item }) => (
-            <View className="flex-row items-center justify-between p-3 bg-[#3A1A6A]/40 rounded-xl mb-3">
-              <View className="flex-row items-center">
-                <Image
-                  source={{
-                    uri: `https://image.tmdb.org/t/p/w500${item}`,
-                  }}
-                  className="w-16 h-16 rounded-xl"
-                />
-              </View>
-            </View>
-          )}
-        />
-      )}
+        <ScrollView>
+
+        </ScrollView>   
+           )}
       <View className="mb-10">
         <FloatingAction
           color="#3A1A6A"
