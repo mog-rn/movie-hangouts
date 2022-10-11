@@ -140,10 +140,7 @@ export default function Homepage() {
                 }}
                   resizeMode="contain"
                   className="h-44 w-36 rounded-xl mb-3" />
-                <View className="space-y-2">
-                  <Text className="text-white w-32 text-xs">{movie.title}</Text>
-                  {/* <Text className="text-white text-xs">{movie.release_date}</Text> */}
-                </View>
+                
               </TouchableOpacity>
             ))}
 
