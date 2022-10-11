@@ -4,19 +4,14 @@ import {
   TextInput,
   Image,
   TouchableOpacity,
-  FlatList,
-  ActivityIndicator,
   ScrollView,
 } from "react-native";
 import MainLayout from "../layouts/MainLayout";
 import profile from "../assets/profile.jpg";
 import { FloatingAction } from "react-native-floating-action";
-import {
-  MagnifyingGlassIcon,
-  TicketIcon,
-} from "react-native-heroicons/outline";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import Categories from "../components/Categories";
+// import actions from "../constants/actions.json"
 
 const actions = [
   {
@@ -38,6 +33,7 @@ const actions = [
     color: "#3A1A6A",
   },
 ];
+
 
 export default function Homepage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -86,62 +82,21 @@ export default function Homepage() {
           />
         </View>
       </View>
-      <View className="py-3">
-        <Text className="text-white text-xl font-bold mb-5">Categories</Text>
-        <View className="flex-row mx space-x-5 items-start">
-          <TouchableOpacity className="h-16 w-16 p-2 bg-[#3A1A6A]/40 rounded-xl justify-between items-center">
-            <Text className="text-2xl">😱</Text>
-            <Text className="text-white text-xs">Horror</Text>
-          </TouchableOpacity>
-          <TouchableOpacity className="h-16 w-16 p-2 bg-[#3A1A6A]/40 rounded-xl justify-between items-center">
-            <Text className="text-2xl">🥶</Text>
-            <Text className="text-white text-xs">Thriller</Text>
-          </TouchableOpacity>
-          <TouchableOpacity className="h-16 w-16 p-2 bg-[#3A1A6A]/40 rounded-xl justify-between items-center">
-            <Text className="text-2xl">🤣</Text>
-            <Text className="text-white text-xs">Comedy</Text>
-          </TouchableOpacity>
-          <TouchableOpacity className="h-16 w-17 p-2 bg-[#3A1A6A]/40 rounded-xl justify-between items-center">
-            <Text className="text-2xl">😍</Text>
-            <Text className="text-white text-xs">Romance</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
+      {/* Categories */}
+      <Categories />
       <ScrollView>
         <View>
           <Text className="text-white font-bold text-xl py-2">New Releases</Text>
           <ScrollView horizontal >
             {data.map((movie, id) => (
-              <TouchableOpacity key={movie.id} className="space-y-2 p-2 items-start">
+              <TouchableOpacity key={movie.id} className="space-y-2 px-1 items-start">
                 <Image source={{
                   uri: `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
 
                 }}
                   resizeMode="contain"
-                  className="h-44 w-36 rounded-xl mb-3" />
-                <View className="space-y-2">
-                  <Text className="text-white w-32 text-xs">{movie.title}</Text>
-                  {/* <Text className="text-white text-xs">{movie.release_date}</Text> */}
-                </View>
-              </TouchableOpacity>
-            ))}
-
-          </ScrollView>
-
-        </View>
-        <View>
-          <Text className="text-white font-bold text-xl py-2">New Releases</Text>
-          <ScrollView horizontal >
-            {data.map((movie, id) => (
-              <TouchableOpacity key={movie.id} className="space-y-2 p-2 items-start">
-                <Image source={{
-                  uri: `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-
-                }}
-                  resizeMode="contain"
-                  className="h-44 w-36 rounded-xl mb-3" />
-                
-              </TouchableOpacity>
+                  className="h-36 w-28 rounded-md mb-3" />
+               </TouchableOpacity>
             ))}
 
           </ScrollView>
