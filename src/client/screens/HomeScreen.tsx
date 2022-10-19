@@ -103,16 +103,7 @@ export default function Homepage() {
 
         </View>
       </ScrollView>
-      <View className="mb-10">
-        <FloatingAction
-          color="#3A1A6A"
-          overlayColor="rgba(68, 68, 68, 0.6)"
-          actions={actions}
-          position="right"
-          distanceToEdge={3}
-          showBackground={false}
-        />
-      </View>
+      
     </MainLayout>
   );
 }
