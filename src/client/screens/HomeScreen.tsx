@@ -7,7 +7,6 @@ import {
   ScrollView,
 } from "react-native";
 import MainLayout from "../layouts/MainLayout";
-import profile from "../assets/profile.jpg";
 import { FloatingAction } from "react-native-floating-action";
 import { useEffect, useState } from "react";
 import Categories from "../components/Categories";
@@ -63,25 +62,16 @@ export default function Homepage() {
 
   return (
     <MainLayout>
-      <View className="space-y-5">
-        <View className="flex-row items-center justify-between">
-          <View className="flex-row items-center">
-            <Text className="text-white text-lg font-bold">Hi, </Text>
-            <Text className="text-[#8b44f5ec] text-2xl font-bold">Amos</Text>
-          </View>
-          <Image
-            source={profile}
-            className="w-12 h-12 rounded-full border-white border-2"
-          />
-        </View>
-        <View className="bg-black flex-row">
+      {/* <View className="space-y-5"> */}
+        
+        {/* <View className="bg-black flex-row"> */}
           {/* <MagnifyingGlassIcon className="text-white h-2" /> */}
-          <TextInput
+          {/* <TextInput
             className="bg-white rounded-md p-2 w-full outline-none"
-            placeholder="Search for your movie "
-          />
-        </View>
-      </View>
+            placeholder="Search for your movie " */}
+          {/* /> */}
+        {/* </View> */}
+      {/* </View> */}
       {/* Categories */}
       <Categories />
       <ScrollView>

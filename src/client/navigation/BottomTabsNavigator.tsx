@@ -6,6 +6,7 @@ import Profile from "../screens/ProfileScreen";
 import HomeScreen from "../screens/HomeScreen";
 import ListScreen from "../screens/ListScreen";
 import SearchScreen from "../screens/SearchScreen";
+import ChatScreen from "../screens/Chat/ChatScreen";
 
 // icons
 import { SparklesIcon } from "react-native-heroicons/solid";
@@ -15,8 +16,10 @@ import {
   MagnifyingGlassIcon,
   PlusCircleIcon,
   TicketIcon,
+  ChatBubbleLeftRightIcon,
 } from "react-native-heroicons/outline";
 import Tickets from "../screens/TicketsScreen";
+import Header from "../components/Header";
 
 const Tab = createBottomTabNavigator();
 
@@ -33,6 +36,18 @@ const BottomTabsNavigator = () => {
           elevation: 0,
           height: 65,
         },
+        headerStyle: {
+          backgroundColor: "#130824",
+          opacity: 0.9,
+          // position: "absolute"
+        },
+        headerTitleStyle: {
+          color: "#fff",
+          fontSize: 20,
+          fontWeight: "bold",
+          paddingTop: 20,
+        },
+        
       }}
     >
       <Tab.Screen
@@ -40,6 +55,7 @@ const BottomTabsNavigator = () => {
         component={HomeScreen}
         options={{
           tabBarIcon: () => <HomeIconOutline color="#fff" size={30} />,
+          headerTitle: (props) => <Header />,
         }}
       />
       <Tab.Screen
@@ -50,19 +66,19 @@ const BottomTabsNavigator = () => {
         }}
       />
       <Tab.Screen
-        name={screen_names.LIST}
-        component={ListScreen}
+        name={screen_names.CHAT}
+        component={ChatScreen}
         options={{
-          tabBarIcon: () => <PlusCircleIcon color="#fff" size={30} />,
+          tabBarIcon: () => <ChatBubbleLeftRightIcon color="#fff" size={30} />,
         }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Tickets"
         component={Tickets}
         options={{
           tabBarIcon: () => <TicketIcon color="#fff" size={30} />,
         }}
-      />
+      /> */}
       <Tab.Screen
         name={screen_names.PROFILE}
         component={Profile}
