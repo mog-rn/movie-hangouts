@@ -6,34 +6,29 @@ import LoginScreen from './LoginScreen'
 import { useNavigation } from '@react-navigation/native'
 import { NavigationContainer } from '@react-navigation/native'
 import AuthLayout from "../../layouts/AuthLayout"
+import axios from 'axios'
 
 
 const RegisterScreen = () => {
-  const [name, setName] = useState()
+  const [name, setName] = useState('')
   const [email, setEmail] = useState()
   const [phone, setPhone] = useState()
   const [password, setPassword] = useState()
 
 
+  console.log(name, password, email, phone)
 
   const navigate = useNavigation()
 
-  const requestOptions = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name: name, email: email, phone: phone, password: password })
-  };
-
   const registerUser = async () => {
-    try {
-      await fetch('https://movie-hangouts-api-gdmai4z3ya-ue.a.run.app/api/v1/user/register', requestOptions)
-        .then(response => response.json())
-        .then(data => {
-          Alert.alert("User Created Successfully")
-        })
-    } catch (e: any) {
-      console.error(e);
-    }
+    const data =  await axios.post('https://movie-hangouts-api-gdmai4z3ya-ue.a.run.app/user/register', {
+      name, email, password, phone
+    })
+    .then(function (response) {
+      console.log(response);
+      navigate.navigate('Login')
+    })
+    .catch(e => console.error(e))
   }
   // function registerUser(): void {
   //   throw new Error('Function not implemented.')
@@ -49,7 +44,7 @@ const RegisterScreen = () => {
           className='border-2 rounded-lg p-2'
           placeholder='john doe'
           value={name}
-          onChange={() => setName(name)}
+          onChangeText={(newName) => setName(newName)}
 
         />
         <Text className='text-xl font-bold mt-4'>Email</Text>
@@ -57,20 +52,20 @@ const RegisterScreen = () => {
           className='border-2 rounded-lg p-2'
           placeholder="johndoe@gmail.com"
           value={email}
-          onChange={() => setEmail(email)}
+          onChangeText={(newEmail) => setEmail(newEmail)}
         />
         <Text className='text-xl font-bold mt-4'>Phone</Text>
         <TextInput
           className='border-2 rounded-lg p-2'
-          placeholder='07XX XXXXXX'
+          placeholder='+2547XX XXXXXX'
           value={phone}
-          onChange={() => setPhone(phone)}
+          onChangeText={(newPhone) => setPhone(newPhone)}
         />
         <Text className='text-xl font-bold mt-4'>Password</Text>
         <TextInput
           className='border-2 rounded-lg p-2 mb-8'
           value={password}
-          onChange={() => setPassword(password)}
+          onChangeText={(pass) => setPassword(pass)}
         />
         <Button title='Sign Up' color='#6A30CA' onPress={() => registerUser()} />
       </View>
