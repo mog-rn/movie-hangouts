@@ -3,6 +3,7 @@ import React, { useLayoutEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useUserContext } from "../../context/UserContext";
+import AuthLayout from "../../layouts/AuthLayout";
 
 const LoginScreen = () => {
   const navigation = useNavigation();
@@ -19,18 +20,19 @@ const LoginScreen = () => {
   }, []);
 
   return (
-    <SafeAreaView className="flex items-center w-full justify-center h-full p-2">
+    <AuthLayout>
+      <View className="justify-center items-center h-screen">
       <Text className="text-2xl font-bold">Login</Text>
       <View>
         <Text className="text-xl font-semibold">Email</Text>
         <TextInput
-          className="border w-48 rounded-lg p-2"
+          className="border-2 w-48 rounded-lg p-2"
           placeholder="john.doe@gmail.com"
           value={email}
         />
         <Text className="text-xl font-semibold">Password</Text>
         <TextInput
-          className="border w-48 rounded-lg p-2"
+          className="border-2 w-48 rounded-lg p-2"
           value={password}
           placeholder="password"
         />
@@ -38,7 +40,8 @@ const LoginScreen = () => {
           <Button title="Sign in" color="#6A30CA" onPress={auth.signIn} />
         </View>
       </View>
-    </SafeAreaView>
+      </View>
+    </AuthLayout>
   );
 };
 
