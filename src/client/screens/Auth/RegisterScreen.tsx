@@ -15,9 +15,6 @@ const RegisterScreen = () => {
   const [phone, setPhone] = useState()
   const [password, setPassword] = useState()
 
-
-  console.log(name, password, email, phone)
-
   const navigate = useNavigation()
 
   const registerUser = async () => {
@@ -30,9 +27,6 @@ const RegisterScreen = () => {
       })
       .catch(e => console.error(e))
   }
-  // function registerUser(): void {
-  //   throw new Error('Function not implemented.')
-  // }
 
   return (
     <AuthLayout>
