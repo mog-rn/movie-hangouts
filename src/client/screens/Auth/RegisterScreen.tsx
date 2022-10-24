@@ -15,24 +15,18 @@ const RegisterScreen = () => {
   const [phone, setPhone] = useState()
   const [password, setPassword] = useState()
 
-
-  console.log(name, password, email, phone)
-
   const navigate = useNavigation()
 
   const registerUser = async () => {
-    const data =  await axios.post('https://movie-hangouts-api-gdmai4z3ya-ue.a.run.app/user/register', {
+    const data = await axios.post('https://movie-hangouts-api-gdmai4z3ya-ue.a.run.app/user/register', {
       name, email, password, phone
     })
-    .then(function (response) {
-      console.log(response);
-      navigate.navigate('Login')
-    })
-    .catch(e => console.error(e))
+      .then(function (response) {
+        console.log(response);
+        navigate.navigate('Login')
+      })
+      .catch(e => console.error(e))
   }
-  // function registerUser(): void {
-  //   throw new Error('Function not implemented.')
-  // }
 
   return (
     <AuthLayout>
