@@ -11,7 +11,7 @@ const MainLayout = ({children}: {children: React.ReactNode}) => {
       // })
     }, [])
   return (
-    <View className="text-white flex-1 flex px-5 py-12 bg-[#130824]">
+    <View className="text-white flex-1 flex px-5 py-5 relative bg-[#130824]">
       {children}
     </View>
   )
