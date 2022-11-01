@@ -10,6 +10,7 @@ import MainLayout from "../layouts/MainLayout";
 import { FloatingAction } from "react-native-floating-action";
 import { useEffect, useState } from "react";
 import Categories from "../components/Categories";
+import { useNavigation } from "@react-navigation/native";
 // import actions from "../constants/actions.json"
 
 const actions = [
@@ -37,6 +38,9 @@ const actions = [
 export default function Homepage() {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
+
+
+  const navigate = useNavigation()
 
   const upcomingMovies = async () => {
     try {
@@ -79,7 +83,8 @@ export default function Homepage() {
           <Text className="text-white font-bold text-xl py-2">New Releases</Text>
           <ScrollView horizontal >
             {data.map((movie, id) => (
-              <TouchableOpacity key={movie.id} className="space-y-2 px-1 items-start">
+              <TouchableOpacity key={movie.id} className="space-y-2 px-1 items-start" 
+              onPress={navigate.navigate('MovieDetails')}>
                 <Image source={{
                   uri: `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
 
