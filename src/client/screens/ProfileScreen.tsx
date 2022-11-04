@@ -1,42 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-import { View, Text } from 'react-native'
-import React from 'react'
 import MainLayout from '../layouts/MainLayout'
-import {ChevronRightIcon} from "@heroicons/react/solid"
-=======
-// import { 
-//   View, 
-//   Text,
-//   TouchableOpacity
-
-//  } from 'react-native'
-// import React from 'react'
-// import MainLayout from '../layouts/MainLayout'
-// import { FloatingAction } from 'react-native-floating-action'
-
-// const Profile = () => {
-//   return (
-//     <MainLayout>
-//       <View className='p-5'>
-//       <TouchableOpacity className='text-white font-bold text-xl py-2'>My List</TouchableOpacity>
-//         <Text></Text>
-
-//       </View>
-//       <Text>Profile</Text>
-//     </MainLayout>
-
-//   )
-// }
-
-// const 
-
-
-
-// export default Profile
-
-=======
->>>>>>> 1dcc4739c0d0ba0c1748682dc3710aa498fffc05
 import React, { Component } from 'react';
 import {
   StyleSheet,
@@ -48,19 +10,17 @@ import {
 import Header from '../components/Header';
 import profile from "../assets/profile.jpg";
 import { ChevronRightIcon, CogIcon, PlusIcon } from "react-native-heroicons/outline";
-import { ChevronRightIcon as ChevronRightIconMini } from "react-native-heroicons/mini";
 import { useNavigation } from '@react-navigation/native';
 const ProfileScreen = () => {
 
   const navigate = useNavigation()
->>>>>>> 9f2a1132bb543cb6405666ee1402574958e4e3c7
 
   return (
     <View style={styles.container}>
       <View style={styles.header}></View>
       <Image style={styles.avatar} source={profile} />
-      <View style={styles.body}>
-        <View style={styles.bodyContent}>
+      <View className='flex px-4' style={styles.body}>
+        <View  style={styles.bodyContent}>
           <Text style={styles.name}>John Doe</Text>
           <Text style={styles.info}>UX Designer / Mobile developer</Text>
           <Text style={styles.description}>Amos</Text>
@@ -71,12 +31,12 @@ const ProfileScreen = () => {
           </TouchableOpacity>
           <TouchableOpacity className='rounded-lg justify-between px-5' style={styles.buttonContainer} onPress={() => navigate.navigate("Settings")}>
             <Text className='text-xl font-bold color-white'>Settings</Text>
-            <CogIcon color="white" fill="" size={24} />
+            <CogIcon color="white" fill="transparent" size={24} />
           </TouchableOpacity>
-          {/* <ChevronRightIcon /> */}
-
         </View>
-
+        <TouchableOpacity className='mt-56 text-center items-center'>
+          <Text>logout</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
