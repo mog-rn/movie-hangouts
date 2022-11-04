@@ -84,6 +84,10 @@ const BottomTabsNavigator = () => {
         component={Profile}
         options={{
           tabBarIcon: () => <UserCircleIcon color="#fff" size={30} />,
+          tabBarStyle: {
+            backgroundColor: "#130824",
+            height: 60,
+          }
         }}
       />
     </Tab.Navigator>
