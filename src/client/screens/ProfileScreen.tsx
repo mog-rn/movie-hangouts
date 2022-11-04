@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { View, Text } from 'react-native'
 import React from 'react'
 import MainLayout from '../layouts/MainLayout'
@@ -34,6 +35,8 @@ import {ChevronRightIcon} from "@heroicons/react/solid"
 
 // export default Profile
 
+=======
+>>>>>>> 1dcc4739c0d0ba0c1748682dc3710aa498fffc05
 import React, { Component } from 'react';
 import {
   StyleSheet,
