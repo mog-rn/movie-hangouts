@@ -21,8 +21,8 @@ const ProfileScreen = () => {
       <Image style={styles.avatar} source={profile} />
       <View style={styles.body}>
         <View style={styles.bodyContent}>
-          <Text style={styles.name}>John Doe</Text>
-          <Text style={styles.info}>UX Designer / Mobile developer</Text>
+          <Text style={styles.name}>Amos</Text>
+          <Text style={styles.info}>Following</Text>
           <Text style={styles.description}>Amos</Text>
 
           <TouchableOpacity className='rounded-lg justify-between px-5' style={styles.buttonContainer}>
