@@ -1,5 +1,5 @@
 import MainLayout from '../layouts/MainLayout'
-import React, { Component } from 'react';
+import React, { Component, useLayoutEffect } from 'react';
 import {
   StyleSheet,
   Text,
@@ -21,6 +21,12 @@ const ProfileScreen = () => {
   const signOut = () => {
       dispatch(setSignOut())
   }
+
+  useLayoutEffect(() => {
+    navigate.setOptions({
+      headerShown: false
+    })
+  }, [])
 
   return (
     <View style={styles.container}>
