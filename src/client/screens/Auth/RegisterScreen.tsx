@@ -1,12 +1,14 @@
 import { View, Text } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { Button, TextInput, Alert } from 'react-native'
+import { Button, TextInput, Alert, Pressable } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import LoginScreen from './LoginScreen'
 import { useNavigation } from '@react-navigation/native'
 import { NavigationContainer } from '@react-navigation/native'
 import AuthLayout from "../../layouts/AuthLayout"
 import axios from 'axios'
+import { useTogglePasswordVisibility } from '../../hooks'
+import { EyeIcon } from 'react-native-heroicons/solid'
 
 
 const RegisterScreen = () => {
@@ -14,6 +16,8 @@ const RegisterScreen = () => {
   const [email, setEmail] = useState()
   const [phone, setPhone] = useState()
   const [password, setPassword] = useState()
+
+  const {passwordVisibility, rightIcon, handlePasswordVisibility} = useTogglePasswordVisibility()
 
   const navigate = useNavigation()
 
@@ -53,14 +57,21 @@ const RegisterScreen = () => {
           className='border-2 rounded-lg p-2'
           placeholder='+254 7XX XXXXXX'
           value={phone}
+          dataDetectorTypes='phoneNumber'
           onChangeText={(newPhone) => setPhone(newPhone)}
         />
         <Text className='text-xl font-bold mt-4'>Password</Text>
         <TextInput
           className='border-2 rounded-lg p-2 mb-8'
           value={password}
+          placeholder='Enter your password'
+          secureTextEntry={passwordVisibility}
+          enablesReturnKeyAutomatically
           onChangeText={(pass) => setPassword(pass)}
         />
+        <Pressable>
+          <EyeIcon className='h-6' />
+        </Pressable>
         <Button title='Sign Up' color='#6A30CA' onPress={() => registerUser()} />
       </View>
       <View className='justify-center flex-row w-full items-center px-4'>
