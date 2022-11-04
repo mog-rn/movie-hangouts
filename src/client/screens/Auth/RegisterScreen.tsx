@@ -55,7 +55,7 @@ const RegisterScreen = () => {
         <Text className='text-xl font-bold mt-4'>Phone</Text>
         <TextInput
           className='border-2 rounded-lg p-2'
-          placeholder='+2547XX XXXXXX'
+          placeholder='+254 7XX XXXXXX'
           value={phone}
           dataDetectorTypes='phoneNumber'
           onChangeText={(newPhone) => setPhone(newPhone)}
