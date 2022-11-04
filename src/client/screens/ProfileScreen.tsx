@@ -1,33 +1,3 @@
-// import { 
-//   View, 
-//   Text,
-//   TouchableOpacity
-
-//  } from 'react-native'
-// import React from 'react'
-// import MainLayout from '../layouts/MainLayout'
-// import { FloatingAction } from 'react-native-floating-action'
-
-// const Profile = () => {
-//   return (
-//     <MainLayout>
-//       <View className='p-5'>
-//       <TouchableOpacity className='text-white font-bold text-xl py-2'>My List</TouchableOpacity>
-//         <Text></Text>
-
-//       </View>
-//       <Text>Profile</Text>
-//     </MainLayout>
-
-//   )
-// }
-
-// const 
-
-
-
-// export default Profile
-
 import React, { Component } from 'react';
 import {
   StyleSheet,
