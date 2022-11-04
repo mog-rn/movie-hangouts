@@ -1,4 +1,4 @@
-import { TextInput, View, Text, Button } from "react-native";
+import { TextInput, View, Text, Button, Alert } from "react-native";
 import React, { useLayoutEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -16,7 +16,9 @@ const LoginScreen = () => {
   const navigation = useNavigation();
 
   const handleLogin = async () => {
-    const user = {
+    let user;
+
+    user = {
       isLoggedIn: true,
       email: email,
     };
@@ -30,9 +32,17 @@ const LoginScreen = () => {
         }
       )
       .then(function (response) {
-        console.log(response);
+        Alert.alert("Success", "Login Successful");
       })
-      .catch((e) => console.error(e));
+      .catch((e) => {
+        const user = {
+          isLoggedIn: false,
+        };
+
+        Alert.alert("Error", e.message);
+
+        return user;
+      });
 
     dispatch(setSignIn(user));
   };

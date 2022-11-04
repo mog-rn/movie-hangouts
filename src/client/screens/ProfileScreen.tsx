@@ -7,13 +7,20 @@ import {
   Image,
   TouchableOpacity
 } from 'react-native';
-import Header from '../components/Header';
 import profile from "../assets/profile.jpg";
-import { ChevronRightIcon, CogIcon, PlusIcon } from "react-native-heroicons/outline";
+import { CogIcon, PlusIcon } from "react-native-heroicons/outline";
 import { useNavigation } from '@react-navigation/native';
+import { ArrowRightOnRectangleIcon } from 'react-native-heroicons/solid';
+import { useDispatch } from 'react-redux';
+import { setSignOut } from '../features/authSlice';
 const ProfileScreen = () => {
 
   const navigate = useNavigation()
+  const dispatch = useDispatch()
+  
+  const signOut = () => {
+      dispatch(setSignOut())
+  }
 
   return (
     <View style={styles.container}>
@@ -34,8 +41,9 @@ const ProfileScreen = () => {
             <CogIcon color="white" fill="transparent" size={24} />
           </TouchableOpacity>
         </View>
-        <TouchableOpacity className='mt-56 text-center items-center'>
+        <TouchableOpacity className='mt-56 text-center items-center flex-row justify-center space-x-2' onPress={signOut}>
           <Text>logout</Text>
+          <ArrowRightOnRectangleIcon color="#000" />
         </TouchableOpacity>
       </View>
     </View>
