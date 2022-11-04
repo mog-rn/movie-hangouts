@@ -40,36 +40,39 @@ import Header from '../components/Header';
 import profile from "../assets/profile.jpg";
 import { ChevronRightIcon, CogIcon, PlusIcon } from "react-native-heroicons/outline";
 import { ChevronRightIcon as ChevronRightIconMini } from "react-native-heroicons/mini";
-export default class Profile extends Component {
+import { useNavigation } from '@react-navigation/native';
+const ProfileScreen = () => {
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <View style={styles.header}></View>
-        <Image style={styles.avatar} source={profile} />
-        <View style={styles.body}>
-          <View style={styles.bodyContent}>
-            <Text style={styles.name}>John Doe</Text>
-            <Text style={styles.info}>UX Designer / Mobile developer</Text>
-            <Text style={styles.description}>Amos</Text>
+  const navigate = useNavigation()
 
-            <TouchableOpacity className='rounded-lg justify-between px-5' style={styles.buttonContainer}>
-              <Text className='text-xl font-bold color-white'>My List</Text>
-              <PlusIcon fill="white" size={24} color="white" />
-            </TouchableOpacity>
-            <TouchableOpacity className='rounded-lg justify-between px-5' style={styles.buttonContainer}>
-              <Text className='text-xl font-bold color-white'>Settings</Text>
-              <CogIcon color="white" fill="" size={24} />
-            </TouchableOpacity>
-            {/* <ChevronRightIcon /> */}
+  return (
+    <View style={styles.container}>
+      <View style={styles.header}></View>
+      <Image style={styles.avatar} source={profile} />
+      <View style={styles.body}>
+        <View style={styles.bodyContent}>
+          <Text style={styles.name}>John Doe</Text>
+          <Text style={styles.info}>UX Designer / Mobile developer</Text>
+          <Text style={styles.description}>Amos</Text>
 
-          </View>
+          <TouchableOpacity className='rounded-lg justify-between px-5' style={styles.buttonContainer}>
+            <Text className='text-xl font-bold color-white'>My List</Text>
+            <PlusIcon fill="white" size={24} color="white" />
+          </TouchableOpacity>
+          <TouchableOpacity className='rounded-lg justify-between px-5' style={styles.buttonContainer} onPress={() => navigate.navigate("Settings")}>
+            <Text className='text-xl font-bold color-white'>Settings</Text>
+            <CogIcon color="white" fill="" size={24} />
+          </TouchableOpacity>
+          {/* <ChevronRightIcon /> */}
 
         </View>
+
       </View>
-    );
-  }
+    </View>
+  );
 }
+
+export default ProfileScreen
 
 const styles = StyleSheet.create({
   header: {
