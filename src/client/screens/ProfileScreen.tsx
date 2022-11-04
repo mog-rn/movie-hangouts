@@ -47,8 +47,9 @@ import {
 } from 'react-native';
 import Header from '../components/Header';
 import profile from "../assets/profile.jpg";
-import { ChevronRightIcon, CogIcon, PlusIcon } from "react-native-heroicons/outline";
+import { ChevronRightIcon, CogIcon, PlusIcon, TicketIcon } from "react-native-heroicons/outline";
 import { ChevronRightIcon as ChevronRightIconMini } from "react-native-heroicons/mini";
+
 import { useNavigation } from '@react-navigation/native';
 const ProfileScreen = () => {
 
@@ -65,7 +66,7 @@ const ProfileScreen = () => {
           <Text style={styles.info}>Following</Text>
           <Text style={styles.description}>Amos</Text>
 
-          <TouchableOpacity className='rounded-lg justify-between px-5' style={styles.buttonContainer}>
+          <TouchableOpacity className='rounded-lg justify-between px-5' style={styles.buttonContainer} onPress={() => navigate.navigate("List")}>
             <Text className='text-xl font-bold color-white'>My List</Text>
             <PlusIcon fill="white" size={24} color="white" />
           </TouchableOpacity>
@@ -73,9 +74,11 @@ const ProfileScreen = () => {
             <Text className='text-xl font-bold color-white'>Settings</Text>
             <CogIcon color="white" fill="" size={24} />
           </TouchableOpacity>
-          {/* <ChevronRightIcon /> */}
-
-        </View>
+          <TouchableOpacity className='rounded-lg justify-between px-5' style={styles.buttonContainer} onPress={() => navigate.navigate("Tickets")}>
+            <Text className='text-xl font-bold color-white'>Tickets</Text>
+            <TicketIcon color='white' size={24} />
+          </TouchableOpacity>
+         </View>
 
       </View>
     </View>
