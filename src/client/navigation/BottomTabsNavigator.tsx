@@ -26,6 +26,7 @@ const Tab = createBottomTabNavigator();
 const BottomTabsNavigator = () => {
   return (
     <Tab.Navigator
+      initialRouteName="Home"
       screenOptions={{
         tabBarStyle: {
           position: "absolute",
