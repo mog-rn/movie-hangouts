@@ -1,4 +1,4 @@
-import { TextInput, View, Text, Button } from "react-native";
+import { TextInput, View, Text, Button, Alert } from "react-native";
 import React, { useLayoutEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -6,30 +6,52 @@ import { useUserContext } from "../../context/UserContext";
 import AuthLayout from "../../layouts/AuthLayout";
 import { useDispatch } from "react-redux";
 import { setSignIn } from "../../features/authSlice";
+import axios from "axios";
+import { screen_names } from "../../constants/ScreenNames";
 
 const LoginScreen = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const navigation = useNavigation();
 
-  const handleLogin = () => {
-    const user = {
+  const handleLogin = async () => {
+    let user;
+
+    user = {
       isLoggedIn: true,
-      email: 'johndoe@gmail.com',
-      phone: '+254712345678'
-    }
+      email: email,
+    };
 
-    dispatch(setSignIn(user))
+    await axios
+      .post(
+        "https://movie-hangouts-api-gdmai4z3ya-ue.a.run.app/api/v1/auth/login",
+        {
+          email,
+          password,
+        }
+      )
+      .then(function (response) {
+        Alert.alert("Success", "Login Successful");
+      })
+      .catch((e) => {
+        const user = {
+          isLoggedIn: false,
+        };
 
-  }
+        Alert.alert("Error", e.message);
 
-  const dispatch = useDispatch()
+        return user;
+      });
 
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
+    dispatch(setSignIn(user));
+  };
 
-  const navigate = useNavigation()
+  const dispatch = useDispatch();
+
+  const navigate = useNavigation();
 
   // const auth = useUserContext();
-
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -46,24 +68,31 @@ const LoginScreen = () => {
           <TextInput
             className="border-2 w-48 rounded-lg p-2"
             placeholder="john.doe@gmail.com"
-            // value={email}
+            value={email}
+            onChangeText={(text) => setEmail(text)}
           />
           <Text className="text-xl font-semibold">Password</Text>
           <TextInput
             className="border-2 w-48 rounded-lg p-2"
-            // value={password}
+            value={password}
+            onChangeText={(new_pass) => setPassword(new_pass)}
             placeholder="password"
           />
           <View className="mt-2">
             <Button title="Sign in" color="#6A30CA" onPress={handleLogin} />
           </View>
 
-          <View className='flex-row items-center px-4'>
+          <View className="flex-row items-center px-4 mt-5">
+            <Text className="text-md font-bold px-2">
+              Don't have an account?
+            </Text>
 
-            <Text className='text-md font-bold px-2'>Don't have an account?</Text>
-
-            <Text className='underline text-[#6A30CA]' onPress={() => navigate.navigate('Register')}>Sign up</Text>
-
+            <Text
+              className="underline text-[#6A30CA]"
+              onPress={() => navigate.navigate("Register")}
+            >
+              Sign up
+            </Text>
           </View>
         </View>
       </View>
@@ -72,3 +101,6 @@ const LoginScreen = () => {
 };
 
 export default LoginScreen;
+function isUserUserLoggedIn(data: any) {
+  throw new Error("Function not implemented.");
+}

@@ -26,6 +26,7 @@ const Tab = createBottomTabNavigator();
 const BottomTabsNavigator = () => {
   return (
     <Tab.Navigator
+      initialRouteName="Home"
       screenOptions={{
         tabBarStyle: {
           position: "absolute",
@@ -84,6 +85,10 @@ const BottomTabsNavigator = () => {
         component={Profile}
         options={{
           tabBarIcon: () => <UserCircleIcon color="#fff" size={30} />,
+          tabBarStyle: {
+            backgroundColor: "#130824",
+            height: 60,
+          }
         }}
       />
     </Tab.Navigator>
