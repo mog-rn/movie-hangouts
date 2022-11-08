@@ -22,7 +22,7 @@ const MainStackNavigator = () => {
         options={{ title: "", headerTransparent: true }}
       />
       <Stack.Screen name="Settings" component={SettingsScreen} />
-      <Stack.Screen name="List" component={ListScreen} />
+      
     </Stack.Navigator>
   );
 };

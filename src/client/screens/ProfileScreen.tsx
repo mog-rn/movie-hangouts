@@ -8,7 +8,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 import profile from "../assets/profile.jpg";
-import { CogIcon, PlusIcon } from "react-native-heroicons/outline";
+import { CogIcon, PlusIcon, TicketIcon } from "react-native-heroicons/outline";
 import { useNavigation } from '@react-navigation/native';
 import { ArrowRightOnRectangleIcon } from 'react-native-heroicons/solid';
 import { useDispatch } from 'react-redux';
@@ -17,9 +17,9 @@ const ProfileScreen = () => {
 
   const navigate = useNavigation()
   const dispatch = useDispatch()
-  
+
   const signOut = () => {
-      dispatch(setSignOut())
+    dispatch(setSignOut())
   }
 
   useLayoutEffect(() => {
@@ -33,12 +33,11 @@ const ProfileScreen = () => {
       <View style={styles.header}></View>
       <Image style={styles.avatar} source={profile} />
       <View className='flex px-4' style={styles.body}>
-        <View  style={styles.bodyContent}>
-          <Text style={styles.name}>John Doe</Text>
-          <Text style={styles.info}>UX Designer / Mobile developer</Text>
-          <Text style={styles.description}>Amos</Text>
+        <View style={styles.bodyContent}>
+          <Text style={styles.info}>Amos</Text>
+          <Text style={styles.description}>0 Friends</Text>
 
-          <TouchableOpacity className='rounded-lg justify-between px-5' style={styles.buttonContainer} onPress={() => navigate.navigate("List")}>
+          <TouchableOpacity className='rounded-lg justify-between px-5' style={styles.buttonContainer} onPress={() => navigate.navigate("Lists")}>
             <Text className='text-xl font-bold color-white'>My List</Text>
             <PlusIcon fill="white" size={24} color="white" />
           </TouchableOpacity>
@@ -46,11 +45,16 @@ const ProfileScreen = () => {
             <Text className='text-xl font-bold color-white'>Settings</Text>
             <CogIcon color="white" fill="transparent" size={24} />
           </TouchableOpacity>
+          <TouchableOpacity className='rounded-lg justify-between px-5' style={styles.buttonContainer} onPress={() => navigate.navigate("Tickets")}>
+            <Text className='text-xl font-bold color-white'>Tickets</Text>
+            <TicketIcon color="white" fill="transparent" size={24} />
+          </TouchableOpacity>
         </View>
-        <TouchableOpacity className='mt-56 text-center items-center flex-row justify-center space-x-2' onPress={signOut}>
+        <TouchableOpacity className='mt-42 n text-center items-center flex-row justify-center space-x-2' onPress={signOut}>
           <Text>logout</Text>
           <ArrowRightOnRectangleIcon color="#000" />
         </TouchableOpacity>
+
       </View>
     </View>
   );
@@ -78,14 +82,16 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 22,
-    color: "#000",
+    color: "white",
     fontWeight: '600',
+
+
   },
   body: {
     marginTop: 40,
   },
   bodyContent: {
-    flex: 1,
+
     alignItems: 'center',
     padding: 30,
   },
@@ -96,13 +102,13 @@ const styles = StyleSheet.create({
   },
   info: {
     fontSize: 16,
-    color: "#00BFFF",
+    color: "black",
     marginTop: 10
   },
   description: {
     fontSize: 16,
     color: "#696969",
-    marginTop: 10,
+    marginBottom: 20,
     textAlign: 'center'
   },
   buttonContainer: {
