@@ -4,6 +4,9 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Homepage from "../screens/HomeScreen";
 import { screen_names } from "../constants/ScreenNames";
 import BottomTabsNavigator from "./BottomTabsNavigator";
+import SettingsScreen from "../screens/SettingsScreen";
+import { NavigationContainer } from "@react-navigation/native";
+import MovieDetails from "../screens/movies/MovieDetails";
 
 // Stack Navigator for the main app
 const Stack = createNativeStackNavigator();
@@ -13,10 +16,11 @@ const MainStackNavigator = () => {
     <Stack.Navigator>
       {/* <Stack.Screen name="Home" component={Homepage} /> */}
       <Stack.Screen
-        name={screen_names.HOMETABS}
+        name={"BottomTabNavigator"}
         component={BottomTabsNavigator}
-        options={{ headerShown: false }}
+        options={{ title: "", headerTransparent: true }}
       />
+      <Stack.Screen name="Settings" component={SettingsScreen} />
     </Stack.Navigator>
   );
 };

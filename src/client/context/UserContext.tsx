@@ -42,6 +42,7 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
 
   // Sign in
   const signIn = async () => {
+    
     const _authData = await authService.signIn(
       "mogaka.amo254@gmail.com",
       "123456"
