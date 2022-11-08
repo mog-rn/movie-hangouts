@@ -8,6 +8,7 @@ import SettingsScreen from "../screens/SettingsScreen";
 import ListScreen from "../screens/ListScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import MovieDetails from "../screens/movies/MovieDetails";
+import TicketsScreen from "../screens/TicketsScreen";
 
 // Stack Navigator for the main app
 const Stack = createNativeStackNavigator();
@@ -22,7 +23,8 @@ const MainStackNavigator = () => {
         options={{ title: "", headerTransparent: true }}
       />
       <Stack.Screen name="Settings" component={SettingsScreen} />
-      
+      <Stack.Screen name="List" component={ListScreen} />
+      <Stack.Screen name="Tickets" component={TicketsScreen} />
     </Stack.Navigator>
   );
 };

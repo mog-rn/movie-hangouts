@@ -4,7 +4,7 @@ import MainLayout from '../layouts/MainLayout'
 import { useNavigation } from '@react-navigation/native'
 
 
-const Tickets = () => {
+const TicketsScreen = () => {
   const navigate = useNavigation()
 
   useLayoutEffect(() => {
@@ -33,5 +33,5 @@ const Tickets = () => {
   )
 }
 
-export default Tickets
+export default TicketsScreen
 

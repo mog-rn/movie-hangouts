@@ -37,7 +37,7 @@ const ProfileScreen = () => {
           <Text style={styles.info}>Amos</Text>
           <Text style={styles.description}>0 Friends</Text>
 
-          <TouchableOpacity className='rounded-lg justify-between px-5' style={styles.buttonContainer} onPress={() => navigate.navigate("Lists")}>
+          <TouchableOpacity className='rounded-lg justify-between px-5' style={styles.buttonContainer} onPress={() => navigate.navigate("List")}>
             <Text className='text-xl font-bold color-white'>My List</Text>
             <PlusIcon fill="white" size={24} color="white" />
           </TouchableOpacity>
