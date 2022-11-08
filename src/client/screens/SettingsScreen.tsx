@@ -12,6 +12,7 @@ const SettingsScreen = () => {
 
   return (
     <MainLayout>
+        <View> </View>
       <Text>SettingsScreen</Text>
     </MainLayout>
   )

@@ -6,6 +6,7 @@ import { screen_names } from "../constants/ScreenNames";
 import BottomTabsNavigator from "./BottomTabsNavigator";
 import SettingsScreen from "../screens/SettingsScreen";
 import { NavigationContainer } from "@react-navigation/native";
+import MovieDetails from "../screens/movies/MovieDetails";
 
 // Stack Navigator for the main app
 const Stack = createNativeStackNavigator();

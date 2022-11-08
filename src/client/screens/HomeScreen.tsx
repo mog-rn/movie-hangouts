@@ -15,6 +15,9 @@ export default function Homepage() {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
 
+
+  const navigate = useNavigation()
+
   const upcomingMovies = async () => {
     try {
       const response = await fetch(
