@@ -1,8 +1,16 @@
 import { View, Text, TextInput, Button } from 'react-native'
-import React from 'react'
+import React, {useLayoutEffect} from 'react'
 import MainLayout from '../layouts/MainLayout'
+import { useNavigation } from '@react-navigation/native'
 
-const Tickets = () => {
+
+const TicketsScreen = () => {
+  const navigate = useNavigation()
+
+  useLayoutEffect(() => {
+
+  }, [])
+
   return (
     <MainLayout>
       <Text className='text-white font-bold text-xl'>Book your Ticket</Text>
@@ -25,4 +33,5 @@ const Tickets = () => {
   )
 }
 
-export default Tickets
+export default TicketsScreen
+

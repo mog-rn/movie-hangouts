@@ -19,6 +19,8 @@ export default function Homepage() {
 
   const navigate = useNavigation()
 
+
+
   const upcomingMovies = async () => {
     try {
       const response = await fetch(
