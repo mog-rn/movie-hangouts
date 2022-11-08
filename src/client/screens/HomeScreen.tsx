@@ -10,6 +10,7 @@ import MainLayout from "../layouts/MainLayout";
 import { FloatingAction } from "react-native-floating-action";
 import { useEffect, useState } from "react";
 import Categories from "../components/Categories";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Homepage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -17,6 +18,8 @@ export default function Homepage() {
 
 
   const navigate = useNavigation()
+
+
 
   const upcomingMovies = async () => {
     try {
