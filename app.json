@@ -3,6 +3,14 @@
     "name": "movie_hangouts",
     "slug": "movie_hangouts",
     "version": "1.0.0",
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to let you share them with your friends."
+        }
+      ]
+    ],
     "orientation": "portrait",
     "icon": "./src/client/assets/icon.png",
     "userInterfaceStyle": "light",
@@ -14,9 +22,7 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
