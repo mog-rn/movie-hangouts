@@ -68,23 +68,23 @@ const ListScreen = () => {
       </View>
 
       <FlatList data={data}
-      numColumns={3
-      } 
-      renderItem={(movie) => (
-        <TouchableOpacity
-                key={movie.id}
-                className="space-y-2 px-1 items-start"
-              >
-                <Image
-                  source={{
-                    uri: `https://image.tmdb.org/t/p/w500/${movie.poster_path}`,
-                  }}
-                  resizeMode="contain"
-                  className="h-36 w-28 rounded-md mb-3"
-                />
-              </TouchableOpacity>
-      )}
-    />
+        numColumns={3
+        }
+        renderItem={(movie) => (
+          <TouchableOpacity
+            key={movie.id}
+            className="space-y-2 px-1 items-start"
+          >
+            <Image
+              source={{
+                uri: `https://image.tmdb.org/t/p/w500/${movie.poster_path}`,
+              }}
+              resizeMode="contain"
+              className="h-36 w-28 rounded-md mb-3"
+            />
+          </TouchableOpacity>
+        )}
+      />
 
 
 
