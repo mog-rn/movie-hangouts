@@ -59,6 +59,7 @@ export default function Homepage() {
               <TouchableOpacity
                 key={movie.id}
                 className="space-y-2 px-1 items-start"
+                onPress={() => navigate.navigate("MovieDetails")}
               >
                 <Image
                   source={{
