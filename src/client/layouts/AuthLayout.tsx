@@ -13,9 +13,10 @@ const AuthLayout = ({children}: {
         })
     }, [])
   return (
-    <View className='pt-10'>
+    <View className='pt-10 bg-[#130824] flex-1 '>
       {children}
     </View>
+
   )
 }
 

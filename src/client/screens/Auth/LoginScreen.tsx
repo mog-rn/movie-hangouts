@@ -1,4 +1,4 @@
-import { TextInput, View, Text, Button, Alert } from "react-native";
+import { TextInput, View, Text, Button, Alert, TouchableOpacity } from "react-native";
 import React, { useLayoutEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -61,29 +61,33 @@ const LoginScreen = () => {
 
   return (
     <AuthLayout>
-      <View className="justify-center items-center h-screen">
-        <Text className="text-2xl font-bold">Login</Text>
+      <View className="h-screen p-5">
+        <Text className="text-2xl font-bold text-white mb-2 mt-2">Welcome Back!</Text>
+        <Text className="text-xs text-white">Hello again. Enter your credentials to access account</Text>
         <View>
-          <Text className="text-xl font-semibold">Email</Text>
+          <Text className="text-xl font-semibold text-white mt-8">Email</Text>
           <TextInput
-            className="border-2 w-48 rounded-lg p-2"
+            className="border-2 rounded-lg text-sm font-semibold p-2 mt-2 border-[#DFD2F55C] focus:border-white/70"
             placeholder="john.doe@gmail.com"
+            placeholderTextColor={"#DFD2F55C"}
             value={email}
             onChangeText={(text) => setEmail(text)}
           />
-          <Text className="text-xl font-semibold">Password</Text>
+          <Text className="text-xl font-semibold text-white mt-6">Password</Text>
           <TextInput
-            className="border-2 w-48 rounded-lg p-2"
+            className="border-2 rounded-lg p-2 mt-2 border-[#DFD2F55C] focus:border-white/70 "
             value={password}
             onChangeText={(new_pass) => setPassword(new_pass)}
-            placeholder="password"
+            placeholder="Password"
+            placeholderTextColor={"#DFD2F55C"}
           />
-          <View className="mt-2">
-            <Button title="Sign in" color="#6A30CA" onPress={handleLogin} />
+          <Text className="text-md font-bold px-2 text-white"> Forgot Password?</Text>
+          <View className="mt-32">
+            <Button title="Login" color="#6A30CA" onPress={handleLogin} />
           </View>
 
-          <View className="flex-row items-center px-4 mt-5">
-            <Text className="text-md font-bold px-2">
+          <View className="flex-row items-center px-4 mt-5 justify-center">
+            <Text className="text-md font-bold px-2 text-white">
               Don't have an account?
             </Text>
 
