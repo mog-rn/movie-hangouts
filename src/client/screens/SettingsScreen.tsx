@@ -32,15 +32,17 @@ const SettingsScreen = () => {
 
   return (
     <MainLayout>
-      <ScrollView>
-        <View className="flex-row px-2 items-center w-1/2 justify-around">
-          <TouchableHighlight onPress={() => navigate.goBack()}>
-            <ChevronLeftIcon color="#fff" fill="#fff" size={20} />
-          </TouchableHighlight>
-          <Text className="text-white text-2xl font-bold justify-center">
+      <View className="flex-row px-2 items-center w-[100%] ">
+        <TouchableHighlight onPress={() => navigate.goBack()}>
+          <ChevronLeftIcon color="#fff" fill="#fff" size={20} />
+        </TouchableHighlight>
+        <View className="justify-center items-center w-[45%]">
+          <Text className="text-white text-4xl font-bold justify-center">
             Settings
           </Text>
         </View>
+      </View>
+      <ScrollView>
         <View className="flex-row items-center space-x-2 mt-10 border-b py-5 border-white/10">
           <UserIcon color="#fff" fill="#fff" size={20} />
           <Text className="text-white text-lg">Account</Text>
@@ -98,15 +100,15 @@ const SettingsScreen = () => {
         <View className="mt-5 mb-10 space-y-3">
           <View className="flex-row w-full  items-center justify-between  py-3 px-3 rounded-lg">
             <Text className="text-white text-sm">Language</Text>
-            <TouchableHighlight  onPress={() => Alert.alert("ok")}>
-            <ChevronRightIcon color="white" fill="white" size={15} />
-          </TouchableHighlight>
+            <TouchableHighlight onPress={() => Alert.alert("ok")}>
+              <ChevronRightIcon color="white" fill="white" size={15} />
+            </TouchableHighlight>
           </View>
           <View className="flex-row w-full items-center justify-between py-3 px-3 rounded-lg">
             <Text className="text-white text-sm">Country</Text>
             <TouchableHighlight onPress={() => Alert.alert("ok")}>
-            <ChevronRightIcon color="white" fill="white" size={25} />
-          </TouchableHighlight>
+              <ChevronRightIcon color="white" fill="white" size={15} />
+            </TouchableHighlight>
           </View>
         </View>
       </ScrollView>
