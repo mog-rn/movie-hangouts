@@ -4,6 +4,7 @@ import MainLayout from "../../layouts/MainLayout";
 import blackpanther from "../../assets/black.jpg";
 import { StarIcon, ChevronLeftIcon } from "react-native-heroicons/solid";
 import { useNavigation } from "@react-navigation/native";
+import { Button } from "@draftbit/core";
 
 const MovieDetailsScreen = () => {
   const navigate = useNavigation();
@@ -44,7 +45,7 @@ const MovieDetailsScreen = () => {
           </Text>
         </View>
         <View>
-          <Button title="Book Ticket"/>
+          <Button title="Book Ticket" color="#6A30CA"/>
         </View>
       </ScrollView>
     </MainLayout>
