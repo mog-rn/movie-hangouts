@@ -43,6 +43,9 @@ const MovieDetailsScreen = () => {
             porttitor rhoncus dolor purus non enim praesent elementum facilisis
           </Text>
         </View>
+        <View>
+          <Button title="Book Ticket"/>
+        </View>
       </ScrollView>
     </MainLayout>
   );
