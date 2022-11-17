@@ -68,6 +68,7 @@ const RegisterScreen = () => {
     useTogglePasswordVisibility();
 
   const navigate = useNavigation();
+  
 
   const registerUser = async () => {
     const data = await axios
@@ -90,43 +91,49 @@ const RegisterScreen = () => {
   };
 
   return (
-    <AuthLayout>
-      <View className="p-5">
-        <Text className="text-3xl text-center font-bold mb-4">Sign Up</Text>
-        <Text className="text-sm font-semibold py-2 ml-1">Username</Text>
+    <AuthLayout> 
+      <View className="p-5 text-white">
+        <Text className="text-3xl text-white text-left font-bold mb-1 ml-1">Create account</Text>
+        <Text className="text-sm text-white font-semibold py-2 ml-1 mb-2">Welcome. Fill your details to create account</Text>
+        <Text className="text-sm text-white font-semibold py-2 ml-1">Username</Text>
         <TextInput
-          className="border-2 rounded-lg px-2 h-10"
+          className="text-white border-2 rounded-lg px-2 h-10 border-[#DFD2F55C] focus:border-white/70"
           placeholder="Please choose a unique username"
-          value={username}
-          onChangeText={(user_name) => setUserName(user_name)}
-        />
-        <Text className="text-sm font-semibold py-2 ml-1">Full Name</Text>
-        <TextInput
-          className="border-2 rounded-lg px-2 h-10"
-          placeholder="john doe"
+          placeholderTextColor="#DFD2F55C"
           value={name}
           onChangeText={(newName) => setName(newName)}
         />
-        <Text className="text-sm font-bold py-2 ml-1">Email</Text>
+        <Text className="text-white text-sm font-semibold py-2 ml-1">Full Name</Text>
         <TextInput
-          className="border-2 rounded-lg px-2 h-10"
+          className="border-2 rounded-lg px-2 h-10 border-[#DFD2F55C] focus:border-white/70"
+          placeholder="john doe"
+          placeholderTextColor="#DFD2F55C"
+          value={name}
+          onChangeText={(newName) => setName(newName)}
+        />
+        <Text className="text-white text-sm font-bold py-2 ml-1">Email</Text>
+        <TextInput
+          className="border-2 rounded-lg px-2 h-10 border-[#DFD2F55C] focus:border-white/70"
           placeholder="johndoe@gmail.com"
+          placeholderTextColor="#DFD2F55C"
           value={email}
           onChangeText={(newEmail) => setEmail(newEmail)}
         />
-        <Text className="text-sm font-bold py-2 ml-1">Phone</Text>
+        <Text className="text-white text-white text-sm font-bold py-2 ml-1">Phone</Text>
         <TextInput
-          className="border-2 rounded-lg px-2 h-10"
+          className="border-2 rounded-lg px-2 h-10 border-[#DFD2F55C] focus:border-white/70"
           placeholder="+254 7XX XXXXXX"
+          placeholderTextColor="#DFD2F55C"
           value={phone}
           dataDetectorTypes="phoneNumber"
           onChangeText={(newPhone) => setPhone(newPhone)}
         />
-        <Text className="text-sm font-bold py-2 ml-1">Password</Text>
+        <Text className="text-white text-sm font-bold py-2 ml-1">Password</Text>
         <TextInput
-          className="border-2 rounded-lg px-2 h-10"
+          className="border-2 rounded-lg px-2 h-10 border-[#DFD2F55C] focus:border-white/70"
           value={password}
           placeholder="Enter your password"
+          placeholderTextColor="#DFD2F55C"
           secureTextEntry={passwordVisibility}
           enablesReturnKeyAutomatically
           onChangeText={(pass) => setPassword(pass)}
@@ -136,10 +143,11 @@ const RegisterScreen = () => {
         </Pressable>
 
         <TouchableOpacity
-          className="h-20 border-2 rounded-lg mb-5 items-center justify-center"
+          className="h-20 border-2 rounded-lg mb-5 items-center justify-center border-[#DFD2F55C] focus:border-white/70"
           onPress={uploadPic}
         >
-          <PlusCircleIcon color="#130824" fill="#130824" />
+
+          <PlusCircleIcon color="#130824" fill="white" />
           {!image ? (
             <Text className="text-xs mt-1 font-bold">Add Profile Picture</Text>
           ) : (
@@ -157,13 +165,13 @@ const RegisterScreen = () => {
         />
       </View>
       <View className="justify-center flex-row w-full items-center px-4">
-        <Text className="text-md font-bold px-2">Already have an account?</Text>
+        <Text className="text-white text-md font-bold px-2">Have an account?</Text>
 
         <Text
           className="underline text-[#6A30CA]"
           onPress={() => navigate.navigate("Login")}
         >
-          Sign In
+          Login
         </Text>
       </View>
     </AuthLayout>
