@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, Image } from "react-native";
 import React, { useEffect, useState } from "react";
 import { Button, TextInput, Alert, Pressable } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -9,13 +9,60 @@ import AuthLayout from "../../layouts/AuthLayout";
 import axios from "axios";
 import { useTogglePasswordVisibility } from "../../hooks";
 import { EyeIcon, PlusCircleIcon } from "react-native-heroicons/solid";
+import ImageUploader from "../../components/Inputs/ImgUpload";
 import * as ImagePicker from "expo-image-picker";
 
 const RegisterScreen = () => {
+  const [username, setUserName] = useState();
   const [name, setName] = useState("");
   const [email, setEmail] = useState();
   const [phone, setPhone] = useState();
   const [password, setPassword] = useState();
+
+  const [image, setImage] = useState(null);
+
+  const uploadPic = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      base64: true,
+      quality: 1,
+    });
+
+    if (!result.cancelled) {
+      setImage(null);
+
+      let base64Img = `data:image/jpg;base64,${result.base64}`;
+
+      let apiUrl = "https://api.cloudinary.com/v1_1/mogaka-dev/image/upload";
+
+      let data = {
+        file: base64Img,
+        upload_preset: "movie_hangouts",
+      };
+
+      fetch(apiUrl, {
+        body: JSON.stringify(data),
+        headers: {
+          "content-type": "application/json",
+        },
+        method: "POST",
+      })
+        .then(async (r) => {
+          let data = await r.json();
+          console.log(data.secure_url);
+          setImage(data.secure_url);
+        })
+        .catch((err) => console.log(err));
+    }
+
+    console.log(result);
+
+    if (!result.cancelled) {
+      // setImage(result.uri);
+    }
+  };
 
   const { passwordVisibility, rightIcon, handlePasswordVisibility } =
     useTogglePasswordVisibility();
@@ -25,12 +72,14 @@ const RegisterScreen = () => {
   const registerUser = async () => {
     const data = await axios
       .post(
-        "https://movie-hangouts-api-gdmai4z3ya-ue.a.run.app/user/register",
+        "https://movie-hangouts-api-gdmai4z3ya-ue.a.run.app/api/v1/auth/register",
         {
+          username,
           name,
           email,
           password,
           phone,
+          profile_pic: image
         }
       )
       .then(function (response) {
@@ -38,21 +87,6 @@ const RegisterScreen = () => {
         navigate.navigate("Login");
       })
       .catch((e) => Alert.alert("Error", e.message));
-  };
-
-  const uploadPic = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
-    });
-
-    console.log(result);
-
-    if (!result.cancelled) {
-      // setImage(result.uri);
-    }
   };
 
   return (
@@ -63,8 +97,8 @@ const RegisterScreen = () => {
         <TextInput
           className="border-2 rounded-lg px-2 h-10"
           placeholder="Please choose a unique username"
-          value={name}
-          onChangeText={(newName) => setName(newName)}
+          value={username}
+          onChangeText={(user_name) => setUserName(user_name)}
         />
         <Text className="text-sm font-semibold py-2 ml-1">Full Name</Text>
         <TextInput
@@ -106,8 +140,16 @@ const RegisterScreen = () => {
           onPress={uploadPic}
         >
           <PlusCircleIcon color="#130824" fill="#130824" />
-          <Text className="text-xs mt-1 font-bold">Add Profile Picture</Text>
+          {!image ? (
+            <Text className="text-xs mt-1 font-bold">Add Profile Picture</Text>
+          ) : (
+            <Image source={{
+                uri: `${setImage(image)}`
+            }}
+            className="h-12 w-[100%]" />
+          )}
         </TouchableOpacity>
+
         <Button
           title="Sign Up"
           color="#6A30CA"
