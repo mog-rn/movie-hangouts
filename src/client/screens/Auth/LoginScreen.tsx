@@ -81,7 +81,6 @@ const LoginScreen = () => {
             placeholder="Password"
             placeholderTextColor={"#DFD2F55C"}
           />
-          <Text className="text-md font-bold px-2 text-white"> Forgot Password?</Text>
           <View className="mt-32">
             <Button title="Login" color="#6A30CA" onPress={handleLogin} />
           </View>
