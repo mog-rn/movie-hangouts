@@ -8,10 +8,12 @@ import { useDispatch } from "react-redux";
 import { setSignIn } from "../../features/authSlice";
 import axios from "axios";
 import { screen_names } from "../../constants/ScreenNames";
+import { useTogglePasswordVisibility } from "../../hooks";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const {passwordVisibility, rightIcon, handlePasswordVisibility} = useTogglePasswordVisibility()
 
   const navigation = useNavigation();
 
@@ -67,7 +69,7 @@ const LoginScreen = () => {
         <View>
           <Text className="text-xl font-semibold text-white mt-8">Email</Text>
           <TextInput
-            className="border-2 rounded-lg text-sm font-semibold p-2 mt-2 border-[#DFD2F55C] focus:border-white/70"
+            className="border-2 text-white rounded-lg text-sm font-semibold p-2 mt-2 border-[#DFD2F55C] focus:border-white/70"
             placeholder="john.doe@gmail.com"
             placeholderTextColor={"#DFD2F55C"}
             value={email}
@@ -75,10 +77,12 @@ const LoginScreen = () => {
           />
           <Text className="text-xl font-semibold text-white mt-6">Password</Text>
           <TextInput
-            className="border-2 rounded-lg p-2 mt-2 border-[#DFD2F55C] focus:border-white/70 "
+            className="border-2 rounded-lg text-white p-2 mt-2 border-[#DFD2F55C] focus:border-white/70 "
             value={password}
             onChangeText={(new_pass) => setPassword(new_pass)}
             placeholder="Password"
+            secureTextEntry={passwordVisibility}
+            enablesReturnKeyAutomatically
             placeholderTextColor={"#DFD2F55C"}
           />
           <View className="mt-32">

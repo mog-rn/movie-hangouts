@@ -100,12 +100,12 @@ const RegisterScreen = () => {
           className="text-white border-2 rounded-lg px-2 h-10 border-[#DFD2F55C] focus:border-white/70"
           placeholder="Please choose a unique username"
           placeholderTextColor="#DFD2F55C"
-          value={name}
-          onChangeText={(newName) => setName(newName)}
+          value={username}
+          onChangeText={(user_name) => setUserName(user_name)}
         />
         <Text className="text-white text-sm font-semibold py-2 ml-1">Full Name</Text>
         <TextInput
-          className="border-2 rounded-lg px-2 h-10 border-[#DFD2F55C] focus:border-white/70"
+          className="border-2 rounded-lg px-2 h-10 border-[#DFD2F55C] text-white focus:border-white/70"
           placeholder="john doe"
           placeholderTextColor="#DFD2F55C"
           value={name}
@@ -113,15 +113,15 @@ const RegisterScreen = () => {
         />
         <Text className="text-white text-sm font-bold py-2 ml-1">Email</Text>
         <TextInput
-          className="border-2 rounded-lg px-2 h-10 border-[#DFD2F55C] focus:border-white/70"
+          className="border-2 rounded-lg px-2 h-10 text-white border-[#DFD2F55C] focus:border-white/70"
           placeholder="johndoe@gmail.com"
           placeholderTextColor="#DFD2F55C"
           value={email}
           onChangeText={(newEmail) => setEmail(newEmail)}
         />
-        <Text className="text-white text-white text-sm font-bold py-2 ml-1">Phone</Text>
+        <Text className="text-white text-sm font-bold py-2 ml-1">Phone</Text>
         <TextInput
-          className="border-2 rounded-lg px-2 h-10 border-[#DFD2F55C] focus:border-white/70"
+          className="border-2 rounded-lg text-white px-2 h-10 border-[#DFD2F55C] focus:border-white/70"
           placeholder="+254 7XX XXXXXX"
           placeholderTextColor="#DFD2F55C"
           value={phone}
@@ -130,7 +130,7 @@ const RegisterScreen = () => {
         />
         <Text className="text-white text-sm font-bold py-2 ml-1">Password</Text>
         <TextInput
-          className="border-2 rounded-lg px-2 h-10 border-[#DFD2F55C] focus:border-white/70"
+          className="border-2 text-white rounded-lg px-2 h-10 border-[#DFD2F55C] focus:border-white/70"
           value={password}
           placeholder="Enter your password"
           placeholderTextColor="#DFD2F55C"
@@ -149,12 +149,9 @@ const RegisterScreen = () => {
 
           <PlusCircleIcon color="#130824" fill="white" />
           {!image ? (
-            <Text className="text-xs mt-1 font-bold">Add Profile Picture</Text>
+            <Text className="text-xs mt-1 font-bold text-white">Add Profile Picture</Text>
           ) : (
-            <Image source={{
-                uri: `${setImage(image)}`
-            }}
-            className="h-12 w-[100%]" />
+            <Text  className="text-xs mt-1 font-bold text-white">Profile picture is set</Text>
           )}
         </TouchableOpacity>
 
