@@ -92,9 +92,9 @@ const RegisterScreen = () => {
 
   return (
     <AuthLayout> 
-      <View className="p-5 text-white">
+      <View className="px-5 text-white">
         <Text className="text-3xl text-white text-left font-bold mb-1 ml-1">Create account</Text>
-        <Text className="text-sm text-white font-semibold py-2 ml-1 mb-2">Welcome. Fill your details to create account</Text>
+        <Text className="text-xs text-white font-semibold py-2 ml-1 mb-2">Welcome. Fill your details to create account</Text>
         <Text className="text-sm text-white font-semibold py-2 ml-1">Username</Text>
         <TextInput
           className="text-white border-2 rounded-lg px-2 h-10 border-[#DFD2F55C] focus:border-white/70"
@@ -149,7 +149,7 @@ const RegisterScreen = () => {
 
           <PlusCircleIcon color="#130824" fill="white" />
           {!image ? (
-            <Text className="text-xs mt-1 font-bold">Add Profile Picture</Text>
+            <Text className="text-white text-xs mt-1 font-bold">Add Profile Picture</Text>
           ) : (
             <Image source={{
                 uri: `${setImage(image)}`
@@ -164,8 +164,8 @@ const RegisterScreen = () => {
           onPress={() => registerUser()}
         />
       </View>
-      <View className="justify-center flex-row w-full items-center px-4">
-        <Text className="text-white text-md font-bold px-2">Have an account?</Text>
+      <View className="mt-3 justify-center flex-row w-full items-center px-4">
+        <Text className=" text-white text-xs font-light px-2">Have an account?</Text>
 
         <Text
           className="underline text-[#6A30CA]"

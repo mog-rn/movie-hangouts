@@ -18,6 +18,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
         animated={true}
         // translucent={true}
         barStyle={"light-content"}
+        
       />
       {children}
     </View>

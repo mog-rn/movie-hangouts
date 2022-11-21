@@ -45,7 +45,7 @@ const ListScreen = () => {
         }
       );
       const data = await response.json();
-      // console.log(data.results);
+      // console.log(data);
       setData(data.results);
     } catch (e) {
       console.log(e);
@@ -67,23 +67,30 @@ const ListScreen = () => {
 
       </View>
 
-      <FlatList data={data}
-        numColumns={3
-        }
-        renderItem={(movie) => (
-          <TouchableOpacity
-            key={movie.id}
-            className="space-y-2 px-1 items-start"
-          >
+      <FlatList 
+      data={data}
+      horizontal={false}
+      numColumns={3}
+      renderItem={({ item }) => (
+        <TouchableOpacity
+            
+            className="space-y-2 px-[4px] items-start" >
+        
+            
             <Image
               source={{
-                uri: `https://image.tmdb.org/t/p/w500/${movie.poster_path}`,
+                uri: `https://image.tmdb.org/t/p/w500/${item.backdrop_path}`,
               }}
-              resizeMode="contain"
-              className="h-36 w-28 rounded-md mb-3"
+              resizeMethod='auto'
+              resizeMode="stretch"
+              
+              className="h-28 w-24 rounded-md mb-3"
             />
+            
           </TouchableOpacity>
         )}
+
+        className=" grid grid-cols-2 place-items-center"
       />
 
 

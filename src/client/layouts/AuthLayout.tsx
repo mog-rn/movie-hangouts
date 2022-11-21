@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native'
+import { View, Text, StatusBar } from 'react-native'
 import React, { ReactNode, useLayoutEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 
@@ -14,6 +14,14 @@ const AuthLayout = ({children}: {
     }, [])
   return (
     <View className='pt-10 bg-[#130824] flex-1 '>
+      <StatusBar
+        backgroundColor="#130824"
+
+        animated={true}
+        // translucent={true}
+        barStyle={"light-content"}
+        
+      />
       {children}
     </View>
 

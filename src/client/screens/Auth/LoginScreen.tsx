@@ -61,7 +61,7 @@ const LoginScreen = () => {
 
   return (
     <AuthLayout>
-      <View className="h-screen p-5">
+      <View className="h-screen px-5">
         <Text className="text-2xl font-bold text-white mb-2 mt-2">Welcome Back!</Text>
         <Text className="text-xs text-white">Hello again. Enter your credentials to access account</Text>
         <View>
