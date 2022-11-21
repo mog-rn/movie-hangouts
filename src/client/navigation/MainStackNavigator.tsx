@@ -10,6 +10,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import MovieDetails from "../screens/movies/MovieDetails";
 import MovieDetailsScreen from "../screens/movies/MovieDetails";
 import TicketScreen from "../screens/Tickets/TicketScreen";
+import PaymentChoice from "../screens/payments/PaymentChoice";
+import MPesaPayment from "../screens/payments/MpesaScreen";
 
 // Stack Navigator for the main app
 const Stack = createNativeStackNavigator();
@@ -27,6 +29,8 @@ const MainStackNavigator = () => {
       <Stack.Screen name="List" component={ListScreen} />
       <Stack.Screen name="Tickets" component={TicketScreen} />
       <Stack.Screen name="MovieDetails" component={MovieDetailsScreen} />
+      <Stack.Screen name="PaymentChoice" component={PaymentChoice} />
+      <Stack.Screen name="MPesa" component={MPesaPayment} />
     </Stack.Navigator>
   );
 };

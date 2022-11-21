@@ -1,6 +1,7 @@
-import { View, Text, SafeAreaView, StatusBar } from "react-native";
+import { View, Text, StatusBar } from "react-native";
 import React, { useLayoutEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   const navigate = useNavigation();
@@ -11,7 +12,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
     // })
   }, []);
   return (
-    <View className="text-white flex-1 flex px-5 py-5 relative bg-[#130824]">
+    <SafeAreaView className="text-white flex-1 flex px-5 py-5 relative bg-[#130824]">
       <StatusBar
         backgroundColor="#130824"
 
@@ -20,7 +21,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
         barStyle={"light-content"}
       />
       {children}
-    </View>
+    </SafeAreaView>
   );
 };
 
