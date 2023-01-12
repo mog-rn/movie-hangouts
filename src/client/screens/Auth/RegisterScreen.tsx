@@ -10,7 +10,7 @@ import axios from "axios";
 import { useTogglePasswordVisibility } from "../../hooks";
 import { EyeIcon, PlusCircleIcon } from "react-native-heroicons/solid";
 import ImageUploader from "../../components/Inputs/ImgUpload";
-import * as ImagePicker from "expo-image-picker";
+// import * as ImagePicker from "expo-image-picker";
 
 const RegisterScreen = () => {
   const [username, setUserName] = useState();
@@ -22,46 +22,46 @@ const RegisterScreen = () => {
   const [image, setImage] = useState(null);
 
   const uploadPic = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
-      allowsEditing: true,
-      aspect: [4, 3],
-      base64: true,
-      quality: 1,
-    });
+    // let result = await ImagePicker.launchImageLibraryAsync({
+    //   mediaTypes: ImagePicker.MediaTypeOptions.All,
+    //   allowsEditing: true,
+    //   aspect: [4, 3],
+    //   base64: true,
+    //   quality: 1,
+    // });
 
-    if (!result.cancelled) {
-      setImage(null);
+    // if (!result.cancelled) {
+    //   setImage(null);
 
-      let base64Img = `data:image/jpg;base64,${result.base64}`;
+    //   let base64Img = `data:image/jpg;base64,${result.base64}`;
 
-      let apiUrl = "https://api.cloudinary.com/v1_1/mogaka-dev/image/upload";
+    //   let apiUrl = "https://api.cloudinary.com/v1_1/mogaka-dev/image/upload";
 
-      let data = {
-        file: base64Img,
-        upload_preset: "movie_hangouts",
-      };
+    //   let data = {
+    //     file: base64Img,
+    //     upload_preset: "movie_hangouts",
+    //   };
 
-      fetch(apiUrl, {
-        body: JSON.stringify(data),
-        headers: {
-          "content-type": "application/json",
-        },
-        method: "POST",
-      })
-        .then(async (r) => {
-          let data = await r.json();
-          console.log(data.secure_url);
-          setImage(data.secure_url);
-        })
-        .catch((err) => console.log(err));
-    }
+    //   fetch(apiUrl, {
+    //     body: JSON.stringify(data),
+    //     headers: {
+    //       "content-type": "application/json",
+    //     },
+    //     method: "POST",
+    //   })
+    //     .then(async (r) => {
+    //       let data = await r.json();
+    //       console.log(data.secure_url);
+    //       setImage(data.secure_url);
+    //     })
+    //     .catch((err) => console.log(err));
+    // }
 
-    console.log(result);
+    // console.log(result);
 
-    if (!result.cancelled) {
-      // setImage(result.uri);
-    }
+    // if (!result.cancelled) {
+    //   // setImage(result.uri);
+    // }
   };
 
   const { passwordVisibility, rightIcon, handlePasswordVisibility } =
