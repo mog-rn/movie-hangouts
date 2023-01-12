@@ -9,7 +9,7 @@ export const movieApi = createApi({
     getMovies: builder.mutation({
       query: ({ query }) => {
         return {
-          url: ``,
+          url: `https://api.themoviedb.org/3/search/movie?api_key=57f69e0d07d803f48a501b9447c516e1&language=en-US&page=1&include_adult=false`,
           method: "get"
         }
       },
