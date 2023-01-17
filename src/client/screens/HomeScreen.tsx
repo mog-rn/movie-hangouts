@@ -8,43 +8,46 @@ import {
 } from "react-native";
 import MainLayout from "../layouts/MainLayout";
 import { FloatingAction } from "react-native-floating-action";
-import { useEffect, useState } from "react";
+import {
+  JSXElementConstructor,
+  Key,
+  ReactElement,
+  ReactFragment,
+  ReactPortal,
+  useEffect,
+  useState,
+} from "react";
 import Categories from "../components/Categories";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUpcomingMovies, selectMovie } from "../features/movieSlice";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
-export default function Homepage() {
+
+interface Props {
+  movie: NativeStackNavigationProp<any>;
+}
+
+
+export default function Homepage({ movie }: Props) {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
+  const dispatch = useDispatch();
+  const route = useRoute()
 
+  const movieId = route.params?.movieId
 
-  const navigate = useNavigation()
+  const navigate = useNavigation();
 
+  // const { movies, loading } = useSelector((state) => state.movies);
 
+  const upcoming = useSelector((state) => state.movies.upcoming);
 
-  const upcomingMovies = async () => {
-    try {
-      const response = await fetch(
-        "https://api.themoviedb.org/3/movie/upcoming?api_key=57f69e0d07d803f48a501b9447c516e1&language=en-US",
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      const data = await response.json();
-      // console.log(data.results);
-      setData(data.results);
-    } catch (e) {
-      console.log(e);
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   useEffect(() => {
-    upcomingMovies();
-  }, []);
+    dispatch(fetchUpcomingMovies());
+    dispatch(selectMovie(movieId))
+  }, [movieId]);
 
   return (
     <MainLayout>
@@ -55,21 +58,40 @@ export default function Homepage() {
             New Releases
           </Text>
           <ScrollView horizontal>
-            {data.map((movie, id) => (
-              <TouchableOpacity
-                key={movie.id}
-                className="space-y-2 px-1 items-start"
-                onPress={() => navigate.navigate("MovieDetails")}
-              >
-                <Image
-                  source={{
-                    uri: `https://image.tmdb.org/t/p/w500/${movie.poster_path}`,
-                  }}
-                  resizeMode="contain"
-                  className="h-36 w-28 rounded-md mb-3"
-                />
-              </TouchableOpacity>
-            ))}
+            {upcoming?.map(
+              (
+                movie: {
+                  poster_path: any;
+                  title:
+                    | string
+                    | number
+                    | boolean
+                    | ReactElement<any, string | JSXElementConstructor<any>>
+                    | ReactFragment
+                    | ReactPortal
+                    | null
+                    | undefined;
+                },
+                id: Key | null | undefined
+              ) => (
+                <TouchableOpacity
+                  key={id}
+                  onPress={() => navigate.navigate("MovieDetails", { movie })}
+                >
+                  <View className="mx-2">
+                    <Image
+                      source={{
+                        uri: `https://image.tmdb.org/t/p/w500/${movie.poster_path}`,
+                      }}
+                      style={{ width: 150, height: 200 }}
+                    />
+                    {/* <Text className="text-white text-center">
+                      {movie.title}
+                    </Text> */}
+                  </View>
+                </TouchableOpacity>
+              )
+            )}
           </ScrollView>
         </View>
       </ScrollView>

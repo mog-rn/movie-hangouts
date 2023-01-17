@@ -11,7 +11,7 @@ import React, { useState, useEffect } from "react";
 // Maps
 // import MapView from "react-native-maps";
 import MainLayout from "../layouts/MainLayout";
-import { useGetMoviesMutation } from "../../services/movieService";
+import { useGetMoviesMutation } from "../features/movieSlice";
 import { useNavigation } from "@react-navigation/native";
 
 const Search = () => {

@@ -1,15 +1,16 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { movieApi } from "../../services/movieService";
+import { configureStore, createAsyncThunk } from "@reduxjs/toolkit";
 import authSlice from "../features/authSlice";
-import userSlice from "../features/authSlice";
+import movieSlice from "../features/movieSlice";
 
 const store = configureStore({
   reducer: {
     userAuth: authSlice,
-    [movieApi.reducerPath]: movieApi.reducer,
+    movies: movieSlice,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(movieApi.middleware),
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
