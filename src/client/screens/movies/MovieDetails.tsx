@@ -1,4 +1,11 @@
-import { View, Image, Text, ScrollView } from "react-native";
+import {
+  View,
+  Image,
+  Text,
+  ScrollView,
+  TouchableHighlight,
+  Button,
+} from "react-native";
 import React, { useLayoutEffect } from "react";
 import MainLayout from "../../layouts/MainLayout";
 import blackpanther from "../../assets/black.jpg";
@@ -15,6 +22,7 @@ const MovieDetailsScreen = () => {
 
   const genreNames = movie.genre_ids.map((id) => {
     genres.find((g) => g.id === id)?.name;
+  });
 
   useLayoutEffect(() => {
     navigate.setOptions({
@@ -23,11 +31,15 @@ const MovieDetailsScreen = () => {
   }, []);
   return (
     <MainLayout>
-      <View className="flex-row items-center">
-        <ChevronLeftIcon color="white" />
-        <Text className="text-white text-2xl font-bold">Movie Details</Text>
+      <View className="flex-row items-center w-screen">
+        <TouchableHighlight onPress={() => navigate.goBack()}>
+          <ChevronLeftIcon color="white" />
+        </TouchableHighlight>
+        <Text className="text-white text-2xl text-center w-full font-bold">
+          {movie.title}
+        </Text>
       </View>
-      <ScrollView>
+      <ScrollView className="my-10">
         <View className="w-full items-center">
           <Image
             source={{
@@ -37,9 +49,6 @@ const MovieDetailsScreen = () => {
           />
         </View>
         <View className="mt-[18px]">
-          <Text className="text-white font-bold text-[28px]">
-            {movie.title}
-          </Text>
           <Text className="text-white text-[17px] font-light mt-[16px] items-center">
             {movie.release_date} | <StarIcon color="#FCD34D" size={15} />{" "}
             {movie.vote_average} / 10
@@ -48,12 +57,17 @@ const MovieDetailsScreen = () => {
         </View>
 
         <View className="mt-5">
-          <Text className="text-white font-bold text-[24px]">Synopsis</Text>
-          <Text className="text-white text-[15px] mt-[14px]">
+          <Text className="text-white font-bold text-[24px]">Overview</Text>
+          <Text className="text-white text-sm tracking-wide leading-2 mt-[14px]">
             {movie.overview}
           </Text>
         </View>
       </ScrollView>
+      <Button
+        title="Book Ticket"
+        color="#6A30CA"
+        onPress={() => navigate.navigate("Tickets", { movie: movie })}
+      />
     </MainLayout>
   );
 };

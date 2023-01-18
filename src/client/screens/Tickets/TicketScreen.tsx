@@ -1,28 +1,41 @@
 import { View, Text, Image, TouchableHighlight, Button } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import MainLayout from "../../layouts/MainLayout";
 import Screen from "../../assets/svg/screen.svg";
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
 } from "react-native-heroicons/solid";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import CinemaSeats from "../../components/CinemaSeats";
 
 const TicketScreen = () => {
-
-  const navigation = useNavigation()
+  const navigation = useNavigation();
+  const route = useRoute();
+  const movie = route.params.movie;
 
   const handleBookings = () => {
-    navigation.navigate("PaymentChoice")
-  }
+    navigation.navigate("PaymentChoice");
+  };
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerShown: false,
+    });
+  }, []);
 
   return (
     <MainLayout>
       <View className="flex-row  items-center w-[100%]">
-        <TouchableHighlight className="p-2 bg-transparent rounded-full" onPress={() => navigation.goBack()}>
+        <TouchableHighlight
+          className="p-2 bg-transparent rounded-full"
+          onPress={() => navigation.goBack()}
+        >
           <ChevronLeftIcon size={20} color="white" />
         </TouchableHighlight>
-        <Text className="text-white text-lg font-semibold mx-20">Black Adam</Text>
+        <Text className="text-white text-lg font-semibold mx-20">
+          {movie.title}
+        </Text>
       </View>
       <View className="w-[100%] align-center justify-center flex mt-10">
         <Screen className="shadow-lg" />
@@ -30,56 +43,7 @@ const TicketScreen = () => {
       </View>
 
       <View className="justify-center flex-1 w-[100%] space-y-4">
-        <View className="flex-row w-[100%] align-center justify-center space-x-2">
-          <TouchableHighlight>
-            <Image source={require("../../assets/available.png")} />
-          </TouchableHighlight>
-          <Image source={require("../../assets/available.png")} />
-          <Image source={require("../../assets/available.png")} />
-          <Image source={require("../../assets/available.png")} />
-          <Image source={require("../../assets/available.png")} />
-          <Image source={require("../../assets/available.png")} />
-        </View>
-        <View className="flex-row w-[100%] align-center justify-center space-x-2">
-          <Image source={require("../../assets/available.png")} />
-          <Image source={require("../../assets/available.png")} />
-          <Image source={require("../../assets/available.png")} />
-          <Image source={require("../../assets/available.png")} />
-          <Image source={require("../../assets/available.png")} />
-          <Image source={require("../../assets/available.png")} />
-          <Image source={require("../../assets/available.png")} />
-          <Image source={require("../../assets/available.png")} />
-        </View>
-        <View className="flex-row w-[100%] align-center justify-center space-x-2">
-          <Image source={require("../../assets/available.png")} />
-          <Image source={require("../../assets/available.png")} />
-          <Image source={require("../../assets/available.png")} />
-          <Image source={require("../../assets/available.png")} />
-          <Image source={require("../../assets/available.png")} />
-          <Image source={require("../../assets/available.png")} />
-          <Image source={require("../../assets/available.png")} />
-          <Image source={require("../../assets/available.png")} />
-        </View>
-        <View className="flex-row w-[100%] align-center justify-center space-x-2">
-          <Image source={require("../../assets/available.png")} />
-          <Image source={require("../../assets/available.png")} />
-          <Image source={require("../../assets/available.png")} />
-          <Image source={require("../../assets/available.png")} />
-          <Image source={require("../../assets/available.png")} />
-          <Image source={require("../../assets/available.png")} />
-          <Image source={require("../../assets/available.png")} />
-          <Image source={require("../../assets/available.png")} />
-        </View>
-        <View className="flex-row w-[100%] align-center justify-center space-x-2">
-          <Image source={require("../../assets/available.png")} />
-          <Image source={require("../../assets/available.png")} />
-          <Image source={require("../../assets/available.png")} />
-          <Image source={require("../../assets/available.png")} />
-          <Image source={require("../../assets/available.png")} />
-          <Image source={require("../../assets/available.png")} />
-          <Image source={require("../../assets/available.png")} />
-          <Image source={require("../../assets/available.png")} />
-        </View>
+        <CinemaSeats />
         <View className="w-[100%] align-center justify-center flex-row space-x-3 pt-5">
           <View className="flex-row items-center space-x-1">
             <Image source={require("../../assets/ellipses/available.png")} />
@@ -101,7 +65,11 @@ const TicketScreen = () => {
           <Text className="text-white">2 Tickets</Text>
         </View>
         <View>
-          <Button title="Book Ticket" color="#6A30CA" onPress={handleBookings} />
+          <Button
+            title="Book Ticket"
+            color="#6A30CA"
+            onPress={handleBookings}
+          />
         </View>
       </View>
     </MainLayout>
