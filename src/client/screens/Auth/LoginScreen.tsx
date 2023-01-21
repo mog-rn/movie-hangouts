@@ -50,8 +50,6 @@ const LoginScreen = () => {
             })
           );
 
-          AsyncStorage.setItem("token", response.data.Authorization)
-          // AsyncStorage.setItem("user", JSON.stringify(user));
           Alert.alert("Success", "Login Successful");
         } else {
           console.log(response);
