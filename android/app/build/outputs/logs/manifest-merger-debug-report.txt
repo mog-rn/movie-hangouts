@@ -9,6 +9,7 @@ MERGED from [com.facebook.flipper:flipper:0.125.0] /home/mog_rn/.gradle/caches/t
 MERGED from [com.facebook.flipper:flipper-network-plugin:0.125.0] /home/mog_rn/.gradle/caches/transforms-3/e32b7eeb3398efff4e100fae60e161ae/transformed/jetified-flipper-network-plugin-0.125.0/AndroidManifest.xml:8:1-15:12
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.125.0] /home/mog_rn/.gradle/caches/transforms-3/d00cb5af49214c127447117a850c65b4/transformed/jetified-flipper-fresco-plugin-0.125.0/AndroidManifest.xml:8:1-15:12
 MERGED from [:react-native-async-storage_async-storage] /home/mog_rn/Desktop/Builds/school_work/movie-hangouts/node_modules/@react-native-async-storage/async-storage/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:react-native-image-picker] /home/mog_rn/Desktop/Builds/school_work/movie-hangouts/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-21:12
 MERGED from [:react-native-safe-area-context] /home/mog_rn/Desktop/Builds/school_work/movie-hangouts/node_modules/react-native-safe-area-context/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-screens] /home/mog_rn/Desktop/Builds/school_work/movie-hangouts/node_modules/react-native-screens/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-svg] /home/mog_rn/Desktop/Builds/school_work/movie-hangouts/node_modules/react-native-svg/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
@@ -39,6 +40,7 @@ MERGED from [com.facebook.fresco:middleware:2.6.0] /home/mog_rn/.gradle/caches/t
 MERGED from [com.facebook.fresco:ui-common:2.6.0] /home/mog_rn/.gradle/caches/transforms-3/d85baf65d8e804b63b1f40f71e53e2c4/transformed/jetified-ui-common-2.6.0/AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/mog_rn/.gradle/caches/transforms-3/c66a0e494ae03615f4f2412eca3a7dd2/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] /home/mog_rn/.gradle/caches/transforms-3/859aeea425ecb1c9af8d15503a5ef58a/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.exifinterface:exifinterface:1.3.3] /home/mog_rn/.gradle/caches/transforms-3/dabeb127ebcf68c206ca5581e62d75f6/transformed/exifinterface-1.3.3/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /home/mog_rn/.gradle/caches/transforms-3/499913aa779d5677f84de1b3821854aa/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.core:core-ktx:1.5.0] /home/mog_rn/.gradle/caches/transforms-3/f9ee54d84de174f183c63ff08d96461c/transformed/jetified-core-ktx-1.5.0/AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.sqlite:sqlite:2.1.0] /home/mog_rn/.gradle/caches/transforms-3/6c2e0b04a335666cd4b78cb912868b2a/transformed/sqlite-2.1.0/AndroidManifest.xml:17:1-24:12
@@ -100,6 +102,8 @@ application
 ADDED from /home/mog_rn/Desktop/Builds/school_work/movie-hangouts/android/app/src/main/AndroidManifest.xml:6:5-25:19
 MERGED from /home/mog_rn/Desktop/Builds/school_work/movie-hangouts/android/app/src/main/AndroidManifest.xml:6:5-25:19
 MERGED from /home/mog_rn/Desktop/Builds/school_work/movie-hangouts/android/app/src/main/AndroidManifest.xml:6:5-25:19
+MERGED from [:react-native-image-picker] /home/mog_rn/Desktop/Builds/school_work/movie-hangouts/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-19:19
+MERGED from [:react-native-image-picker] /home/mog_rn/Desktop/Builds/school_work/movie-hangouts/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-19:19
 MERGED from [com.facebook.react:react-native:0.70.6] /home/mog_rn/.gradle/caches/transforms-3/0b825f9a3cd84cf1738e48fbfed11fea/transformed/jetified-react-native-0.70.6-debug/AndroidManifest.xml:9:5-20
 MERGED from [com.facebook.react:react-native:0.70.6] /home/mog_rn/.gradle/caches/transforms-3/0b825f9a3cd84cf1738e48fbfed11fea/transformed/jetified-react-native-0.70.6-debug/AndroidManifest.xml:9:5-20
 MERGED from [com.facebook.soloader:soloader:0.10.4] /home/mog_rn/.gradle/caches/transforms-3/87826452408345e9fcde9828ee0fb34c/transformed/jetified-soloader-0.10.4/AndroidManifest.xml:11:5-20
@@ -178,6 +182,8 @@ MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.125.0] /home/mog_rn/.g
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.125.0] /home/mog_rn/.gradle/caches/transforms-3/d00cb5af49214c127447117a850c65b4/transformed/jetified-flipper-fresco-plugin-0.125.0/AndroidManifest.xml:11:5-13:41
 MERGED from [:react-native-async-storage_async-storage] /home/mog_rn/Desktop/Builds/school_work/movie-hangouts/node_modules/@react-native-async-storage/async-storage/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-async-storage_async-storage] /home/mog_rn/Desktop/Builds/school_work/movie-hangouts/node_modules/@react-native-async-storage/async-storage/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-image-picker] /home/mog_rn/Desktop/Builds/school_work/movie-hangouts/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-image-picker] /home/mog_rn/Desktop/Builds/school_work/movie-hangouts/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-safe-area-context] /home/mog_rn/Desktop/Builds/school_work/movie-hangouts/node_modules/react-native-safe-area-context/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-safe-area-context] /home/mog_rn/Desktop/Builds/school_work/movie-hangouts/node_modules/react-native-safe-area-context/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-screens] /home/mog_rn/Desktop/Builds/school_work/movie-hangouts/node_modules/react-native-screens/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
@@ -238,6 +244,8 @@ MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/mog_rn
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/mog_rn/.gradle/caches/transforms-3/c66a0e494ae03615f4f2412eca3a7dd2/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.interpolator:interpolator:1.0.0] /home/mog_rn/.gradle/caches/transforms-3/859aeea425ecb1c9af8d15503a5ef58a/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] /home/mog_rn/.gradle/caches/transforms-3/859aeea425ecb1c9af8d15503a5ef58a/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.exifinterface:exifinterface:1.3.3] /home/mog_rn/.gradle/caches/transforms-3/dabeb127ebcf68c206ca5581e62d75f6/transformed/exifinterface-1.3.3/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.3] /home/mog_rn/.gradle/caches/transforms-3/dabeb127ebcf68c206ca5581e62d75f6/transformed/exifinterface-1.3.3/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /home/mog_rn/.gradle/caches/transforms-3/499913aa779d5677f84de1b3821854aa/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /home/mog_rn/.gradle/caches/transforms-3/499913aa779d5677f84de1b3821854aa/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.core:core-ktx:1.5.0] /home/mog_rn/.gradle/caches/transforms-3/f9ee54d84de174f183c63ff08d96461c/transformed/jetified-core-ktx-1.5.0/AndroidManifest.xml:5:5-7:41
@@ -322,6 +330,22 @@ uses-permission#android.permission.ACCESS_WIFI_STATE
 ADDED from [com.facebook.flipper:flipper:0.125.0] /home/mog_rn/.gradle/caches/transforms-3/03f04a3f11198ce3b7c6cedb9b41266b/transformed/jetified-flipper-0.125.0/AndroidManifest.xml:16:5-76
 	android:name
 		ADDED from [com.facebook.flipper:flipper:0.125.0] /home/mog_rn/.gradle/caches/transforms-3/03f04a3f11198ce3b7c6cedb9b41266b/transformed/jetified-flipper-0.125.0/AndroidManifest.xml:16:22-73
+provider#com.imagepicker.ImagePickerProvider
+ADDED from [:react-native-image-picker] /home/mog_rn/Desktop/Builds/school_work/movie-hangouts/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-18:20
+	android:grantUriPermissions
+		ADDED from [:react-native-image-picker] /home/mog_rn/Desktop/Builds/school_work/movie-hangouts/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:13-47
+	android:authorities
+		ADDED from [:react-native-image-picker] /home/mog_rn/Desktop/Builds/school_work/movie-hangouts/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-71
+	android:exported
+		ADDED from [:react-native-image-picker] /home/mog_rn/Desktop/Builds/school_work/movie-hangouts/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-37
+	android:name
+		ADDED from [:react-native-image-picker] /home/mog_rn/Desktop/Builds/school_work/movie-hangouts/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-63
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from [:react-native-image-picker] /home/mog_rn/Desktop/Builds/school_work/movie-hangouts/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:13-17:70
+	android:resource
+		ADDED from [:react-native-image-picker] /home/mog_rn/Desktop/Builds/school_work/movie-hangouts/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:17:17-67
+	android:name
+		ADDED from [:react-native-image-picker] /home/mog_rn/Desktop/Builds/school_work/movie-hangouts/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:16:17-67
 provider#androidx.startup.InitializationProvider
 ADDED from [androidx.emoji2:emoji2:1.0.0] /home/mog_rn/.gradle/caches/transforms-3/b6fe4da57007a43d86a66ba4c66459bd/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:26:9-34:20
 MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] /home/mog_rn/.gradle/caches/transforms-3/bc74a39e1ea23fea00bfcf2682a93948/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:26:9-34:20

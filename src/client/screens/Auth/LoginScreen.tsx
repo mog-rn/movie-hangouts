@@ -1,4 +1,11 @@
-import { TextInput, View, Text, Button, Alert, TouchableOpacity } from "react-native";
+import {
+  TextInput,
+  View,
+  Text,
+  Button,
+  Alert,
+  TouchableOpacity,
+} from "react-native";
 import React, { useLayoutEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -9,32 +16,46 @@ import { setSignIn } from "../../features/authSlice";
 import axios from "axios";
 import { screen_names } from "../../constants/ScreenNames";
 import { useTogglePasswordVisibility } from "../../hooks";
+import { BASE_URL } from "../../../utils/api";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const {passwordVisibility, rightIcon, handlePasswordVisibility} = useTogglePasswordVisibility()
+  const { passwordVisibility, rightIcon, handlePasswordVisibility } =
+    useTogglePasswordVisibility();
 
-  const navigation = useNavigation();
+  const dispatch = useDispatch();
+
+  const navigate = useNavigation();
 
   const handleLogin = async () => {
-    let user;
-
-    user = {
-      isLoggedIn: true,
-      email: email,
-    };
-
     await axios
-      .post(
-        "https://movie-hangouts-api-gdmai4z3ya-ue.a.run.app/api/v1/auth/login",
-        {
-          email,
-          password,
+      .post(`${BASE_URL}/auth/login`, {
+        email,
+        password,
+      })
+      .then((response) => {
+        if (response.status === 201 && response.data.data) {
+          const user = response.data.data;
+          console.log(user);
+          dispatch(
+            setSignIn({
+              email: user.email,
+              isLoggedIn: true,
+              phone: user.phone,
+              username: user.username,
+              profile_pic: user.profile_pic,
+              name: user.name,
+            })
+          );
+
+          AsyncStorage.setItem("token", response.data.Authorization)
+          // AsyncStorage.setItem("user", JSON.stringify(user));
+          Alert.alert("Success", "Login Successful");
+        } else {
+          console.log(response);
         }
-      )
-      .then(function (response) {
-        Alert.alert("Success", "Login Successful");
       })
       .catch((e) => {
         const user = {
@@ -42,21 +63,13 @@ const LoginScreen = () => {
         };
 
         Alert.alert("Error", e.message);
-
-        return user;
       });
-
-    dispatch(setSignIn(user));
   };
-
-  const dispatch = useDispatch();
-
-  const navigate = useNavigation();
 
   // const auth = useUserContext();
 
   useLayoutEffect(() => {
-    navigation.setOptions({
+    navigate.setOptions({
       headerShown: false,
     });
   }, []);
@@ -64,8 +77,12 @@ const LoginScreen = () => {
   return (
     <AuthLayout>
       <View className="h-screen p-5">
-        <Text className="text-2xl font-bold text-white mb-2 mt-2">Welcome Back!</Text>
-        <Text className="text-xs text-white">Hello again. Enter your credentials to access account</Text>
+        <Text className="text-2xl font-bold text-white mb-2 mt-2">
+          Welcome Back!
+        </Text>
+        <Text className="text-xs text-white">
+          Hello again. Enter your credentials to access account
+        </Text>
         <View>
           <Text className="text-xl font-semibold text-white mt-8">Email</Text>
           <TextInput
@@ -75,7 +92,9 @@ const LoginScreen = () => {
             value={email}
             onChangeText={(text) => setEmail(text)}
           />
-          <Text className="text-xl font-semibold text-white mt-6">Password</Text>
+          <Text className="text-xl font-semibold text-white mt-6">
+            Password
+          </Text>
           <TextInput
             className="border-2 rounded-lg text-white p-2 mt-2 border-[#DFD2F55C] focus:border-white/70 "
             value={password}

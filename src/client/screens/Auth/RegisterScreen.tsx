@@ -10,7 +10,8 @@ import axios from "axios";
 import { useTogglePasswordVisibility } from "../../hooks";
 import { EyeIcon, PlusCircleIcon } from "react-native-heroicons/solid";
 import ImageUploader from "../../components/Inputs/ImgUpload";
-// import * as ImagePicker from "expo-image-picker";
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import { BASE_URL } from "../../../utils/api";
 
 const RegisterScreen = () => {
   const [username, setUserName] = useState();
@@ -22,46 +23,48 @@ const RegisterScreen = () => {
   const [image, setImage] = useState(null);
 
   const uploadPic = async () => {
-    // let result = await ImagePicker.launchImageLibraryAsync({
-    //   mediaTypes: ImagePicker.MediaTypeOptions.All,
-    //   allowsEditing: true,
-    //   aspect: [4, 3],
-    //   base64: true,
-    //   quality: 1,
-    // });
+    let result = await launchImageLibrary({
+      mediaType: "photo",
+      includeBase64: true,                                                                                              
+      selectionLimit: 1,
+        // aspect: [4, 3],
+      // base64: true,
 
-    // if (!result.cancelled) {
-    //   setImage(null);
+      quality: 1,
+    });
 
-    //   let base64Img = `data:image/jpg;base64,${result.base64}`;
+    if (!result.didCancel) {
+      setImage(null);
 
-    //   let apiUrl = "https://api.cloudinary.com/v1_1/mogaka-dev/image/upload";
+      let base64Img = `data:image/jpg;base64,${result?.assets[0].base64}`;
 
-    //   let data = {
-    //     file: base64Img,
-    //     upload_preset: "movie_hangouts",
-    //   };
+      let apiUrl = "https://api.cloudinary.com/v1_1/mogaka-dev/image/upload";
 
-    //   fetch(apiUrl, {
-    //     body: JSON.stringify(data),
-    //     headers: {
-    //       "content-type": "application/json",
-    //     },
-    //     method: "POST",
-    //   })
-    //     .then(async (r) => {
-    //       let data = await r.json();
-    //       console.log(data.secure_url);
-    //       setImage(data.secure_url);
-    //     })
-    //     .catch((err) => console.log(err));
-    // }
+      let data = {
+        file: base64Img,
+        upload_preset: "movie_hangouts",
+      };
 
-    // console.log(result);
+      fetch(apiUrl, {
+        body: JSON.stringify(data),
+        headers: {
+          "content-type": "application/json",
+        },
+        method: "POST",
+      })
+        .then(async (r) => {
+          let data = await r.json();
+          console.log(data.secure_url);
+          setImage(data.secure_url);
+        })
+        .catch((err) => console.log(err));
+    }
 
-    // if (!result.cancelled) {
-    //   // setImage(result.uri);
-    // }
+    console.log(result);
+
+    if (!result.didCancel) {
+      setImage(result.uri);
+    }
   };
 
   const { passwordVisibility, rightIcon, handlePasswordVisibility } =
@@ -73,7 +76,7 @@ const RegisterScreen = () => {
   const registerUser = async () => {
     const data = await axios
       .post(
-        "https://movie-hangouts-api-gdmai4z3ya-ue.a.run.app/api/v1/auth/register",
+        `${BASE_URL}/auth/register`,
         {
           username,
           name,

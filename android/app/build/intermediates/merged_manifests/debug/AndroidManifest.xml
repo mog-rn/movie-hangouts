@@ -40,6 +40,15 @@
         </activity>
 
         <provider
+            android:name="com.imagepicker.ImagePickerProvider"
+            android:authorities="com.mh.imagepickerprovider"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/imagepicker_provider_paths" />
+        </provider>
+        <provider
             android:name="androidx.startup.InitializationProvider"
             android:authorities="com.mh.androidx-startup"
             android:exported="false" >

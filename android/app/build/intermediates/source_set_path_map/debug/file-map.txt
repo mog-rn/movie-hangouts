@@ -30,5 +30,8 @@ com.mh.app-mergeDebugResources-28 /home/mog_rn/Desktop/Builds/school_work/movie-
 com.mh.app-merged_res-29 /home/mog_rn/Desktop/Builds/school_work/movie-hangouts/android/app/build/intermediates/merged_res/debug
 com.mh.app-debug-30 /home/mog_rn/Desktop/Builds/school_work/movie-hangouts/android/app/src/debug/res
 com.mh.app-main-31 /home/mog_rn/Desktop/Builds/school_work/movie-hangouts/android/app/src/main/res
-com.mh.app-packaged_res-32 /home/mog_rn/Desktop/Builds/school_work/movie-hangouts/node_modules/react-native-safe-area-context/android/build/intermediates/packaged_res/debug
-com.mh.app-packaged_res-33 /home/mog_rn/Desktop/Builds/school_work/movie-hangouts/node_modules/react-native-screens/android/build/intermediates/packaged_res/debug
+com.mh.app-packaged_res-32 /home/mog_rn/Desktop/Builds/school_work/movie-hangouts/node_modules/@react-native-async-storage/async-storage/android/build/intermediates/packaged_res/debug
+com.mh.app-packaged_res-33 /home/mog_rn/Desktop/Builds/school_work/movie-hangouts/node_modules/react-native-image-picker/android/build/intermediates/packaged_res/debug
+com.mh.app-packaged_res-34 /home/mog_rn/Desktop/Builds/school_work/movie-hangouts/node_modules/react-native-safe-area-context/android/build/intermediates/packaged_res/debug
+com.mh.app-packaged_res-35 /home/mog_rn/Desktop/Builds/school_work/movie-hangouts/node_modules/react-native-screens/android/build/intermediates/packaged_res/debug
+com.mh.app-packaged_res-36 /home/mog_rn/Desktop/Builds/school_work/movie-hangouts/node_modules/react-native-svg/android/build/intermediates/packaged_res/debug
