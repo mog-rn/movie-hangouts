@@ -17,7 +17,6 @@ import axios from "axios";
 import { screen_names } from "../../constants/ScreenNames";
 import { useTogglePasswordVisibility } from "../../hooks";
 import { BASE_URL } from "../../../utils/api";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");

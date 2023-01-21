@@ -31,9 +31,13 @@ const ProfileScreen = (props: {
   const dispatch = useDispatch();
 
   const signOut = () => {
-    AsyncStorage.removeItem("user")
-    AsyncStorage.clear()
-    dispatch(setSignOut());
+    try {
+      AsyncStorage.clear();
+      console.log("AsyncStorage cleared");
+      dispatch(setSignOut());
+    } catch (e) {
+      console.log("Error", e);
+    }
   };
 
   useLayoutEffect(() => {
@@ -76,7 +80,9 @@ const ProfileScreen = (props: {
           <TouchableOpacity
             className="rounded-lg justify-between px-5"
             style={styles.buttonContainer}
-            onPress={() => navigate.navigate("MyTickets", { username: props.username })}
+            onPress={() =>
+              navigate.navigate("MyTickets", { username: props.username })
+            }
           >
             <Text className="text-xl font-bold color-white">Tickets</Text>
             <TicketIcon color="white" fill="transparent" size={24} />
