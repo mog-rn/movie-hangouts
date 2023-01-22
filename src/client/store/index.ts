@@ -4,6 +4,7 @@ import movieSlice from "../features/movieSlice";
 import selectedSeatsSlice from "../features/selectedSeatsSlice";
 import { persistReducer, persistStore } from "redux-persist";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import movieListSlice from "../features/movieListSlice";
 
 const persistConfig = {
   key: "root",
@@ -16,6 +17,7 @@ const store = configureStore({
   reducer: {
     userAuth: authSlice,
     movies: movieSlice,
+    addToList: movieListSlice,
     selectedSeats: selectedSeatsSlice.reducer,
     persistedReducer,
   },

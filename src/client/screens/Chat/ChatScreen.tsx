@@ -7,7 +7,7 @@ import axios from "axios";
 import { BASE_URL } from "../../../utils/api";
 
 const ChatScreen = () => {
-  const socket = io("https://movie-hangouts-api-gdmai4z3ya-ue.a.run.app");
+  const socket = io("https://movie-hangouts-api-production.up.railway.app");
 
   const [users, setUsers] = useState([]);
 

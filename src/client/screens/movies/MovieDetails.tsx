@@ -8,17 +8,22 @@ import {
 } from "react-native";
 import React, { useLayoutEffect } from "react";
 import MainLayout from "../../layouts/MainLayout";
-import blackpanther from "../../assets/black.jpg";
 import { StarIcon, ChevronLeftIcon } from "react-native-heroicons/solid";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { genres } from "../../constants/genres";
+import { addMovie } from "../../features/movieListSlice";
 
 const MovieDetailsScreen = () => {
   const navigate = useNavigation();
   const route = useRoute();
-
+  const dispatch = useDispatch();
   const movie = route.params?.movie;
+
+  const handleAddList = () => {
+    dispatch(addMovie(movie));
+    console.log("Added to list");
+  };
 
   const genreNames = movie.genre_ids.map((id) => {
     genres.find((g) => g.id === id)?.name;
@@ -49,6 +54,7 @@ const MovieDetailsScreen = () => {
           />
         </View>
         <View className="mt-[18px]">
+          <Button title="Add to List" onPress={handleAddList} />
           <Text className="text-white text-[17px] font-light mt-[16px] items-center">
             {movie.release_date} | <StarIcon color="#FCD34D" size={15} />{" "}
             {movie.vote_average} / 10
