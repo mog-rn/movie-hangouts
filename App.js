@@ -29,6 +29,10 @@ import SuccessfullyBooked from './src/screens/SuccessfullyBooked';
 import TicketReceipt from './src/screens/TicketReceipt';
 
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import LoginScreen from './src/screens/Auth/LoginScreen';
+import RegisterScreen from './src/screens/Auth/RegisterScreen';
+import {useSelector} from 'react-redux';
+import {useUserContext} from './src/context/UserContext';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -44,6 +48,21 @@ function TicketStack() {
     </Stack.Navigator>
   );
 }
+
+const AuthStack = createStackNavigator({
+  Login: {
+    screen: LoginScreen,
+    navigationOptions: {
+      title: 'Login',
+    },
+  },
+  Register: {
+    screen: RegisterScreen,
+    navigationOptions: {
+      title: 'Register',
+    },
+  },
+});
 
 function HomeTabs() {
   return (
@@ -94,20 +113,27 @@ function HomeTabs() {
 }
 
 const App = () => {
+  const {authData} = useUserContext();
   return (
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
         }}>
-        <Stack.Screen name="HomeTabs" component={HomeTabs} />
-        <Stack.Screen name="MovieDetail" component={MovieDetail} />
-        <Stack.Screen name="BookTicket" component={BookTicket} />
-        <Stack.Screen name="AllMovieList" component={AllMovieList} />
-        <Stack.Screen
-          name="SuccessfullyBooked"
-          component={SuccessfullyBooked}
-        />
+        {authData ? (
+          <Stack.Screen name="Auth" component={AuthStack} />
+        ) : (
+          <Stack.Group>
+            <Stack.Screen name="HomeTabs" component={HomeTabs} />
+            <Stack.Screen name="MovieDetail" component={MovieDetail} />
+            <Stack.Screen name="BookTicket" component={BookTicket} />
+            <Stack.Screen name="AllMovieList" component={AllMovieList} />
+            <Stack.Screen
+              name="SuccessfullyBooked"
+              component={SuccessfullyBooked}
+            />
+          </Stack.Group>
+        )}
       </Stack.Navigator>
     </NavigationContainer>
   );

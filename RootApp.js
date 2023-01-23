@@ -3,6 +3,7 @@ import store from './src/Store';
 import {Provider} from 'react-redux';
 import App from './App';
 import SplashScreen from 'react-native-splash-screen';
+import {AuthProvider} from './src/context/UserContext';
 
 const RootApp = () => {
   useEffect(() => {
@@ -10,9 +11,11 @@ const RootApp = () => {
   }, []);
 
   return (
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <AuthProvider>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </AuthProvider>
   );
 };
 
