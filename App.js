@@ -28,11 +28,10 @@ import SuccessfullyBooked from './src/screens/SuccessfullyBooked';
 // import NewsDetail from './src/screens/NewsDetail';
 import TicketReceipt from './src/screens/TicketReceipt';
 
-import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import LoginScreen from './src/screens/Auth/LoginScreen';
 import RegisterScreen from './src/screens/Auth/RegisterScreen';
-import {useSelector} from 'react-redux';
-import {useUserContext} from './src/context/UserContext';
+
+import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -49,20 +48,17 @@ function TicketStack() {
   );
 }
 
-const AuthStack = createStackNavigator({
-  Login: {
-    screen: LoginScreen,
-    navigationOptions: {
-      title: 'Login',
-    },
-  },
-  Register: {
-    screen: RegisterScreen,
-    navigationOptions: {
-      title: 'Register',
-    },
-  },
-});
+function AuthStack() {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}>
+      <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="Register" component={RegistrationScreen} />
+    </Stack.Navigator>
+  );
+}
 
 function HomeTabs() {
   return (
@@ -113,27 +109,21 @@ function HomeTabs() {
 }
 
 const App = () => {
-  const {authData} = useUserContext();
+  const {authData} = useUserContext()
   return (
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
         }}>
-        {authData ? (
-          <Stack.Screen name="Auth" component={AuthStack} />
-        ) : (
-          <Stack.Group>
-            <Stack.Screen name="HomeTabs" component={HomeTabs} />
-            <Stack.Screen name="MovieDetail" component={MovieDetail} />
-            <Stack.Screen name="BookTicket" component={BookTicket} />
-            <Stack.Screen name="AllMovieList" component={AllMovieList} />
-            <Stack.Screen
-              name="SuccessfullyBooked"
-              component={SuccessfullyBooked}
-            />
-          </Stack.Group>
-        )}
+        <Stack.Screen name="HomeTabs" component={HomeTabs} />
+        <Stack.Screen name="MovieDetail" component={MovieDetail} />
+        <Stack.Screen name="BookTicket" component={BookTicket} />
+        <Stack.Screen name="AllMovieList" component={AllMovieList} />
+        <Stack.Screen
+          name="SuccessfullyBooked"
+          component={SuccessfullyBooked}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
