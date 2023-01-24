@@ -1,6 +1,6 @@
-import React, { createContext, useState, useContext, useEffect } from "react";
+import React, {createContext, useState, useContext, useEffect} from 'react';
 // import { authService } from "./authService";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type AuthContextData = {
   authData?: AuthData;
@@ -17,7 +17,7 @@ type AuthData = {
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
-function AuthProvider({ children }: { children: React.ReactNode }) {
+function AuthProvider({children}: {children: React.ReactNode}) {
   const [authData, setAuthData] = useState<AuthData>();
 
   // loading
@@ -29,7 +29,7 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
 
   async function loadStorageData(): Promise<void> {
     try {
-      const authDataSerialised = await AsyncStorage.getItem("@authData");
+      const authDataSerialised = await AsyncStorage.getItem('@authData');
       if (authDataSerialised) {
         const _authData: AuthData = JSON.parse(authDataSerialised);
         setAuthData(_authData);
@@ -40,47 +40,54 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   }
 
-  async function signIn(email: string, password: string): Promise<AuthData | undefined> {
+  async function signIn(
+    email: string,
+    password: string,
+  ): Promise<AuthData | undefined> {
     try {
-      const response = await fetch("https://movie-hangouts-api-production.up.railway.app/api/v1/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        'https://movie-hangouts-api-production.up.railway.app/api/v1/auth/login',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({email, password}),
         },
-        body: JSON.stringify({ email, password }),
-      });
+      );
       const data = await response.json();
       if (!response.ok) {
         throw new Error(data.message);
       }
+      setAuthData(data);
+      console.log(data);
       return data;
     } catch (err) {
       console.error(err);
       return undefined;
     }
   }
-  
 
-//   // Sign in
-//   const signIn = async () => {
-    
-//     // const _authData = await authService.signIn(
-//     //   "mogaka.amo254@gmail.com",
-//     //   "123456"
-//     // );
+  //   // Sign in
+  //   const signIn = async () => {
 
-//     // setAuthData(_authData);
-//     // AsyncStorage.setItem('@AuthData', JSON.stringify(_authData))
-//   };
+  //     // const _authData = await authService.signIn(
+  //     //   "mogaka.amo254@gmail.com",
+  //     //   "123456"
+  //     // );
+
+  //     // setAuthData(_authData);
+  //     // AsyncStorage.setItem('@AuthData', JSON.stringify(_authData))
+  //   };
 
   // Sign out
   const signOut = async () => {
     setAuthData(undefined);
-    await AsyncStorage.removeItem('@AuthData')
+    await AsyncStorage.removeItem('@AuthData');
   };
 
   return (
-    <AuthContext.Provider value={{ signIn, signOut, authData, loading }}>
+    <AuthContext.Provider value={{signIn, setAuthData, signOut, authData, loading}}>
       {children}
     </AuthContext.Provider>
   );
@@ -88,4 +95,4 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
 
 const useUserContext = () => useContext(AuthContext);
 
-export { AuthProvider, useUserContext };
+export {AuthProvider, useUserContext};

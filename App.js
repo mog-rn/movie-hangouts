@@ -32,6 +32,8 @@ import LoginScreen from './src/screens/Auth/LoginScreen';
 import RegisterScreen from './src/screens/Auth/RegisterScreen';
 
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { useUserContext } from './src/context/UserContext';
+import ProfileScreen from './src/screens/ProfileScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -55,7 +57,7 @@ function AuthStack() {
         headerShown: false,
       }}>
       <Stack.Screen name="Login" component={LoginScreen} />
-      <Stack.Screen name="Register" component={RegistrationScreen} />
+      <Stack.Screen name="Register" component={RegisterScreen} />
     </Stack.Navigator>
   );
 }
@@ -104,26 +106,41 @@ function HomeTabs() {
           ),
         })}
       />
+      <Tab.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={route => ({
+          tabBarIcon: ({color}) => (
+            <Icon name="theaters" size={35} color={color} />
+          ),
+        })}
+      />
     </Tab.Navigator>
   );
 }
 
 const App = () => {
-  const {authData} = useUserContext()
+  const {authData} = useUserContext();
   return (
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
         }}>
-        <Stack.Screen name="HomeTabs" component={HomeTabs} />
-        <Stack.Screen name="MovieDetail" component={MovieDetail} />
-        <Stack.Screen name="BookTicket" component={BookTicket} />
-        <Stack.Screen name="AllMovieList" component={AllMovieList} />
-        <Stack.Screen
-          name="SuccessfullyBooked"
-          component={SuccessfullyBooked}
-        />
+        {!authData ? (
+          <Stack.Screen name="AuthStack " component={AuthStack} />
+        ) : (
+          <Stack.Group>
+            <Stack.Screen name="HomeTabs" component={HomeTabs} />
+            <Stack.Screen name="MovieDetail" component={MovieDetail} />
+            <Stack.Screen name="BookTicket" component={BookTicket} />
+            <Stack.Screen name="AllMovieList" component={AllMovieList} />
+            <Stack.Screen
+              name="SuccessfullyBooked"
+              component={SuccessfullyBooked}
+            />
+          </Stack.Group>
+        )}
       </Stack.Navigator>
     </NavigationContainer>
   );
