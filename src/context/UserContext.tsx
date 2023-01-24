@@ -83,6 +83,7 @@ function AuthProvider({children}: {children: React.ReactNode}) {
   // Sign out
   const signOut = async () => {
     setAuthData(undefined);
+    AsyncStorage.clear();
     await AsyncStorage.removeItem('@AuthData');
   };
 

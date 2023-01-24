@@ -63,10 +63,10 @@ const ProfileScreen = () => {
           </TouchableOpacity> */}
         </View>
         <TouchableOpacity
-          className="mt-42 n text-center items-center flex-row justify-center space-x-2"
+          style={styles.logoutPrompt}
           onPress={signOut}
         >
-          <Text className="text-black">logout</Text>
+          <Text style={styles.text}>logout</Text>
           {/* <ArrowRightOnRectangleIcon color="#000" /> */}
         </TouchableOpacity>
       </View>
@@ -78,10 +78,20 @@ export default connect()(ProfileScreen);
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: "#3A1A6A",
+    backgroundColor: "#181828",
     height: 150,
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
+  },
+  logoutPrompt: {
+    // mt-42 n text-center items-center flex-row justify-center space-x-2
+    marginTop: 42,
+    textAlign: "center",
+    alignItems: "center",
+    flexDirection: "row",
+    justifyContent: "center",
+    paddingHorizontal: 12,
+    fontSize: 9,
   },
   avatar: {
     width: 150,
@@ -94,10 +104,9 @@ const styles = StyleSheet.create({
     position: "absolute",
     marginTop: 70,
   },
-  name: {
-    fontSize: 22,
-    color: "white",
-    fontWeight: "600",
+  text: {
+    fontSize: 20,
+    color: "black",
   },
   body: {
     marginTop: 40,

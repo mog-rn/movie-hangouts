@@ -83,7 +83,8 @@ const RegisterScreen = () => {
           email,
           password,
           phone,
-          profile_pic: image
+          profile_pic: image,
+          token: ""
         }
       )
       .then(function (response) {
